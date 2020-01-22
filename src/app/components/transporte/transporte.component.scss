@@ -1,0 +1,29 @@
+@import "../variables";
+p {
+  font-size: 17px;
+}
+
+#transporte {
+  h2 {
+    margin-top: 10px;
+  }
+  p {
+    font-size: 17px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+#ctaTransporte {
+  background-color: $color1;
+  color: white;
+  padding-top: 10px;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  h3 {
+    padding-left: 50px;
+    button {
+      margin-left: 20px;
+    }
+  }
+}

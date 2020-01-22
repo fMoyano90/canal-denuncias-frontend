@@ -1,0 +1,63 @@
+@import "../../variables";
+
+#footer {
+  border-top: 15px double white;
+  background-color: $color3;
+}
+#nosotros {
+  ul {
+    list-style: none;
+  }
+}
+
+#certificaciones {
+  p {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+.instagram {
+  transition: color 0.5s;
+}
+.facebook {
+  transition: color 0.5s;
+  cursor: pointer;
+}
+.twitter {
+  transition: color 0.5s;
+  cursor: pointer;
+}
+.instagram:hover {
+  color: #d6249f;
+  cursor: pointer;
+}
+.facebook:hover {
+  color: #3b5998;
+}
+.twitter:hover {
+  color: #35dbf1;
+}
+
+#social {
+  ul {
+    list-style: none;
+    li {
+      font-size: 28px;
+    }
+  }
+}
+
+#enlaces {
+  ul {
+    li {
+      a {
+        text-decoration: none;
+        color: white !important;
+        transition: color 0.3s;
+        &:hover {
+          color: #ccc !important;
+        }
+      }
+    }
+  }
+}

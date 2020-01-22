@@ -1,0 +1,48 @@
+@import "../../variables";
+
+.bg-color-1 {
+  background-color: $color1;
+  color: #fff;
+}
+
+#preheader {
+  height: 30px;
+  font-size: 14px;
+  ul {
+    margin-top: 3px;
+    li {
+      color: white;
+      display: inline;
+      a {
+        color: white;
+        text-decoration: none;
+        padding-right: 30px;
+        font-size: 13px;
+      }
+    }
+  }
+}
+#logo {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  img {
+    height: 80px;
+    width: auto;
+  }
+}
+
+/*Escritorio grande XL (Revisamos 1366px en adelante)*/
+@media (min-width: 1200px) {
+}
+/*Escritorio mediano o tablet horizontal MD (Revisamos en 1024px)*/
+@media (max-width: 1199px) and (min-width: 992px) {
+}
+/*Escritorio pequeño o tablet vertical SM (Revisamos en 768px)*/
+@media (max-width: 991px) and (min-width: 768px) {
+}
+/*Movil XS (Revisamos en 320px)*/
+@media (max-width: 767px) {
+  #preheader {
+    display: none;
+  }
+}
