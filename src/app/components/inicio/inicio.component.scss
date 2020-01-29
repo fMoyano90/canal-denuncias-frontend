@@ -33,24 +33,31 @@ article {
   margin-top: 10px;
   border: 1px dotted $color4;
   transition: background-color 0.5s;
-  h6 {
-    padding-top: 10px;
-    font-size: 32px;
-  }
-  h5 {
-    font-size: 21px;
-  }
-  p {
-    padding-left: 15px;
-    padding-right: 15px;
-    font-size: 16px;
+
+  a {
+    text-decoration: none;
+    color: white;
+    h6 {
+      padding-top: 10px;
+      font-size: 32px;
+    }
+    h5 {
+      font-size: 21px;
+    }
+    p {
+      padding-left: 15px;
+      padding-right: 15px;
+      font-size: 16px;
+    }
   }
 }
 
 .services:hover {
   background-color: white;
-  color: black;
   cursor: pointer;
+  a {
+    color: black;
+  }
 }
 
 #servicios {

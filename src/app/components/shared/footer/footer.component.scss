@@ -17,25 +17,40 @@
   }
 }
 .instagram {
-  transition: color 0.5s;
+  a {
+    transition: color 0.5s;
+    color: white;
+    text-decoration: none;
+  }
 }
 .facebook {
-  transition: color 0.5s;
-  cursor: pointer;
+  a {
+    transition: color 0.5s;
+    color: white;
+    text-decoration: none;
+  }
 }
 .twitter {
-  transition: color 0.5s;
-  cursor: pointer;
+  a {
+    transition: color 0.5s;
+    color: white;
+    text-decoration: none;
+  }
 }
 .instagram:hover {
-  color: #d6249f;
-  cursor: pointer;
+  a {
+    color: #d6249f;
+  }
 }
 .facebook:hover {
-  color: #3b5998;
+  a {
+    color: #3b5998;
+  }
 }
 .twitter:hover {
-  color: #35dbf1;
+  a {
+    color: #35dbf1;
+  }
 }
 
 #social {

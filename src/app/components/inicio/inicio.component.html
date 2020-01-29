@@ -1,5 +1,9 @@
 <!--Slider Index-->
-<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+<div
+  id="carouselExampleCaptions"
+  class="carousel slide animated fadeIn"
+  data-ride="carousel"
+>
   <ol class="carousel-indicators">
     <li
       data-target="#carouselExampleCaptions"
@@ -92,7 +96,7 @@
 </div>
 <!--/Slider Index-->
 <!--Main Index-->
-<div class="container-fluid">
+<div class="container-fluid animated fadeIn">
   <div class="row">
     <!--Servicios-->
     <article class="col-9 pt-3">
@@ -101,46 +105,53 @@
           <h1>Servicios</h1>
         </div>
         <div class="col-4 text-center services">
-          <h6>
-            <i class="fas fa-truck-moving"></i>
-          </h6>
-          <h5 class="text-uppercase">Transporte</h5>
-          <p class="text-justify">
-            Ofrecemos servicios de transporte de carga terrestre nacional de
-            diversa índole, los que van desde reparto de productos hasta
-            transporte de sustancias peligrosas. También ofrecemos la
-            realización de tareas de carga, descarga e izaje, prestando así un
-            servicio completo.
-          </p>
+          <a routerLink="/transporte">
+            <h6>
+              <i class="fas fa-truck-moving"></i>
+            </h6>
+            <h5 class="text-uppercase">Transporte</h5>
+            <p class="text-justify">
+              Ofrecemos servicios de transporte de carga terrestre nacional de
+              diversa índole, los que van desde reparto de productos hasta
+              transporte de sustancias peligrosas. También ofrecemos la
+              realización de tareas de carga, descarga e izaje, prestando así un
+              servicio completo.
+            </p>
+          </a>
         </div>
         <div class="col-4 text-center services">
-          <h6>
-            <i class="fas fa-sync-alt"></i>
-          </h6>
-          <h5 class="text-uppercase">Logistica</h5>
-          <p class="text-justify">
-            Realizamos la operación integral de los servicios de abastecimiento,
-            abarcando las operaciones de recepción, almacenamiento, recolección
-            y despacho.
-          </p>
-          <div class="alert alert-primary pl-0 pr-0" role="alert">
-            <small>
-              <i class="fas fa-info-circle"> </i> Haz clic en los recuadros para
-              mas información.
-            </small>
-          </div>
+          <a routerLink="/logistica">
+            <h6>
+              <i class="fas fa-sync-alt"></i>
+            </h6>
+            <h5 class="text-uppercase">Logistica</h5>
+            <p class="text-justify">
+              Realizamos la operación integral de los servicios de
+              abastecimiento, abarcando las operaciones de recepción,
+              almacenamiento, recolección y despacho.
+            </p>
+            <div class="alert alert-primary pl-0 pr-0" role="alert">
+              <small>
+                <i class="fas fa-info-circle"> </i> Haz clic en los recuadros
+                para mas información.
+              </small>
+            </div>
+          </a>
         </div>
         <div class="col-4 text-center services">
-          <h6>
-            <i class="fas fa-boxes"></i>
-          </h6>
-          <h5 class="text-uppercase">Almacenamiento</h5>
-          <p class="text-justify">
-            Disponemos de 10 hectáreas para almacenamiento, ubicadas en Calle
-            Larga, a solo 40 kilómetros de la División Andina de Codelco.
-            Nuestras bodegas y espacios cuentan con seguridad y están
-            habilitados para recibir materiales, mercancías o vehículos mayores.
-          </p>
+          <a routerLink="/almacenamiento">
+            <h6>
+              <i class="fas fa-boxes"></i>
+            </h6>
+            <h5 class="text-uppercase">Almacenamiento</h5>
+            <p class="text-justify">
+              Disponemos de 10 hectáreas para almacenamiento, ubicadas en Calle
+              Larga, a solo 40 kilómetros de la División Andina de Codelco.
+              Nuestras bodegas y espacios cuentan con seguridad y están
+              habilitados para recibir materiales, mercancías o vehículos
+              mayores.
+            </p>
+          </a>
         </div>
       </div>
       <div class="row">
@@ -181,11 +192,12 @@
             depositan su confianza en nosotros.<br />
             ¡Con gusto te atenderemos!
           </p>
-          <p class="lead">
-            <a class="btn btn-danger btn-lg" href="#" role="button"
-              >ABRIR UN TICKET</a
-            >
-          </p>
+          <a
+            class="btn btn-danger btn-lg lead"
+            routerLink="/denuncias"
+            role="button"
+            >ABRIR UN TICKET</a
+          >
         </div>
       </div>
       <div class="row mb-5">
@@ -197,7 +209,9 @@
             <br />
             <small>Acceso exclusivo clientes</small>
           </h3>
-          <button class="btn btn-success btn-lg">INGRESAR</button>
+          <a href="http://67.205.169.202/" class="btn btn-success btn-lg"
+            >INGRESAR</a
+          >
         </div>
         <div class="col-5">
           <p class="text-justify" style="font-size: 18px;">
@@ -206,9 +220,9 @@
             tienes la clave de acceso solicitala acá.
           </p>
           <div class="text-center">
-            <button class="btn btn-secondary text-uppercase">
+            <a routerLink="/contacto" class="btn btn-secondary text-uppercase">
               Solicitar Accesos
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -221,9 +235,13 @@
             </p>
           </div>
           <div class="col-6 text-center mt-2">
-            <button class="btn btn-primary text-right" style="font-size: 18px">
+            <a
+              routerLink="/trabaja-con-nosotros"
+              class="btn btn-primary text-right"
+              style="font-size: 18px"
+            >
               <b>QUIERO DEJAR MI CV</b>
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -290,7 +308,9 @@
           >
         </div>
       </div>
-      <a class="btn btn-block btn-primary text-white text-uppercase mb-3 mt-3"
+      <a
+        routerLink="/noticias"
+        class="btn btn-block btn-primary text-white text-uppercase mb-3 mt-3"
         >Ver todas las noticias</a
       >
     </aside>

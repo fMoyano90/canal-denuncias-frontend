@@ -1,1 +1,165 @@
-<p>denuncias works!</p>
+<div class="container animated fadeIn">
+  <div class="row">
+    <div class="col-12 text-center mt-4 mb-2">
+      <h3>
+        Canal de denuncias
+      </h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim velit
+        cupiditate quae iste? Officia quibusdam ad incidunt quia quae molestiae.
+        Eaque dicta reprehenderit veniam, numquam adipisci id eos aspernatur
+        sit.
+      </p>
+      <hr />
+    </div>
+  </div>
+
+  <form class="form-row mb-4">
+    <div class="col-4">
+      <h4 class="pb-0 mb-0">1. Datos de contacto</h4>
+      <p><small>* Campos requeridos</small></p>
+
+      <label for="nombre">Nombre*</label>
+      <input type="text" name="nombre" class="form-control" />
+      <label for="email">Email*</label>
+      <input type="email" name="email" class="form-control" />
+      <label for="telefono">Telefono*</label>
+      <input type="tel" name="telefono" class="form-control" />
+
+      <h4 class="mt-2">2. Motivo de denuncia</h4>
+
+      <label for="motivo">Seleccione una opción*</label>
+      <div class="form-check">
+        <input
+          [(ngModel)]="opcionSeleccionada"
+          (change)="capturar(opcionSeleccionada)"
+          class="form-check-input"
+          type="radio"
+          name="exampleRadios"
+          id="exampleRadios1"
+          value="option1"
+        />
+        <label class="form-check-label" for="exampleRadios1">
+          Ley de transparencia
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          [(ngModel)]="opcionSeleccionada"
+          (change)="capturar(opcionSeleccionada)"
+          class="form-check-input"
+          type="radio"
+          name="exampleRadios"
+          id="exampleRadios2"
+          value="option2"
+        />
+        <label class="form-check-label" for="exampleRadios2">
+          Relaciones laborales
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          [(ngModel)]="opcionSeleccionada"
+          (change)="capturar(opcionSeleccionada)"
+          class="form-check-input"
+          type="radio"
+          name="exampleRadios"
+          id="exampleRadios3"
+          value="option3"
+        />
+        <label class="form-check-label" for="exampleRadios3">
+          Seguridad
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          [(ngModel)]="opcionSeleccionada"
+          (change)="capturar(opcionSeleccionada)"
+          class="form-check-input"
+          type="radio"
+          name="exampleRadios"
+          id="exampleRadios4"
+          value="option4"
+        />
+        <label class="form-check-label" for="exampleRadios4">
+          Medio Ambiente
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          [(ngModel)]="opcionSeleccionada"
+          (change)="capturar(opcionSeleccionada)"
+          class="form-check-input"
+          type="radio"
+          name="exampleRadios"
+          id="exampleRadios5"
+          value="option5"
+        />
+        <label class="form-check-label" for="exampleRadios5">
+          Comunidad
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          [(ngModel)]="opcionSeleccionada"
+          (change)="capturar(opcionSeleccionada)"
+          class="form-check-input"
+          type="radio"
+          name="exampleRadios"
+          id="exampleRadios6"
+          value="option6"
+        />
+        <label class="form-check-label" for="exampleRadios6">
+          Disconformidad con el servicio
+        </label>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div
+        class="animated fadeIn"
+        *ngIf="
+          opcionSeleccionada == 'option1' ||
+          opcionSeleccionada == 'option2' ||
+          opcionSeleccionada == 'option3' ||
+          opcionSeleccionada == 'option4' ||
+          opcionSeleccionada == 'option5'
+        "
+      >
+        <h4>3. Información de denuncia</h4>
+        <label>Descripción de denuncia*</label>
+        <textarea class="form-control" rows="6"></textarea>
+        <label class="pt-1">Antecedentes de Respaldo</label>
+        <input type="file" class="form-control-file" />
+      </div>
+      <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'option6'">
+        <h4>3. Información de reclamo</h4>
+        <label>Razón social</label>
+        <input type="text" class="form-control" />
+        <label>RUT</label>
+        <input type="text" class="form-control" />
+        <label>Descripción de reclamo*</label>
+        <textarea class="form-control" rows="6"></textarea>
+        <label class="pt-1">Antecedentes de Respaldo</label>
+        <input type="file" class="form-control-file" />
+      </div>
+
+      <div *ngIf="opcionSeleccionada" class="text-center mt-5 animated fadeIn">
+        <button class="btn btn-lg btn-success">
+          <i class="fas fa-paper-plane"></i> Enviar
+        </button>
+      </div>
+    </div>
+
+    <div class="col-4 pl-4 pr-4">
+      <img src="assets/img/gr2.jpg" class="img-fluid rounded-circle" />
+      <p class="text-center mt-3">
+        Somos una empresa comprometida con sus clientes, trabajadores,
+        proveedores, comunidad y el medio ambiente.<br />
+        Todas las denuncias serán investigadas y resueltas mediante un ticket
+        único de seguimiento. Abre un ticket<br />
+        <b>¡Con gusto te atenderemos!</b>
+      </p>
+    </div>
+  </form>
+</div>

@@ -43,6 +43,9 @@ import {
   HAMMER_GESTURE_CONFIG
 } from "@angular/platform-browser";
 import * as Hammer from "hammerjs";
+import { CrearUsuarioComponent } from './components/gestion/crear-usuario/crear-usuario.component';
+import { CrearNoticiaComponent } from './components/gestion/crear-noticia/crear-noticia.component';
+import { TicketComponent } from './components/gestion/ticket/ticket.component';
 
 export class CustomHammerConfig extends HammerGestureConfig {
   overrides = {
@@ -73,7 +76,10 @@ export class CustomHammerConfig extends HammerGestureConfig {
     GestionDenunciasComponent,
     GestionContenidoComponent,
     LoginComponent,
-    TrabajoComponent
+    TrabajoComponent,
+    CrearUsuarioComponent,
+    CrearNoticiaComponent,
+    TicketComponent
   ],
   imports: [
     BrowserModule,

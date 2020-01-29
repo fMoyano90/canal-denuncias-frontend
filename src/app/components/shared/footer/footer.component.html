@@ -20,28 +20,30 @@
     <div class="col-3 p-4" id="enlaces">
       <h3>Enlaces</h3>
       <ul>
-        <li><a href="#">Empresa</a></li>
-        <li><a href="#">Transporte</a></li>
-        <li><a href="#">Logística</a></li>
-        <li><a href="#">Almacenamiento</a></li>
-        <li><a href="#">Sustentabilidad</a></li>
-        <li><a href="#">Noticias</a></li>
-        <li><a href="/galeria">Galería</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a routerLink="/empresa">Empresa</a></li>
+        <li><a routerLink="/transporte">Transporte</a></li>
+        <li><a routerLink="/logistica">Logística</a></li>
+        <li><a routerLink="/almacenamiento">Almacenamiento</a></li>
+        <li><a routerLink="/sustentabilidad">Sustentabilidad</a></li>
+        <li><a routerLink="/noticias">Noticias</a></li>
+        <li><a routerLink="/galeria">Galería</a></li>
+        <li><a routerLink="/contacto">Contacto</a></li>
       </ul>
     </div>
     <div class="col-3 p-4 text-center">
       <h3>Accesos Rapidos</h3>
-      <a href="#" class="text-uppercase btn btn-success btn-block mt-3"
+      <a
+        href="http://67.205.169.202/"
+        class="text-uppercase btn btn-success btn-block mt-3"
         >Indicadores por contrato</a
       >
-      <a href="#" class="text-uppercase btn btn-danger btn-block"
+      <a routerLink="/denuncias" class="text-uppercase btn btn-danger btn-block"
         >Canal de denuncias</a
       >
-      <a href="#" class="text-uppercase btn btn-primary btn-block"
+      <a routerLink="/contacto" class="text-uppercase btn btn-primary btn-block"
         >Trabaja con nosotros</a
       >
-      <a href="#" class="text-uppercase btn btn-info btn-block"
+      <a routerLink="/login" class="text-uppercase btn btn-info btn-block"
         >Acceso administrativo</a
       >
     </div>
@@ -53,9 +55,21 @@
     </div>
     <div class="col-1 p-4 text-right" id="social">
       <ul class="text-white">
-        <li class="facebook"><i class="fab fa-facebook"></i></li>
-        <li class="instagram"><i class="fab fa-instagram"></i></li>
-        <li class="twitter"><i class="fab fa-twitter"></i></li>
+        <li class="facebook">
+          <a href="https://facebook.com" target="__blank"
+            ><i class="fab fa-facebook"></i
+          ></a>
+        </li>
+        <li class="instagram">
+          <a href="https://instagram.com" target="__blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </li>
+        <li class="twitter">
+          <a href="https://twitter.com" target="__blank"
+            ><i class="fab fa-twitter"></i
+          ></a>
+        </li>
       </ul>
     </div>
   </div>
