@@ -1,0 +1,39 @@
+#noticiaPrincipal {
+	img {
+		max-height: 400px;
+		-webkit-filter: brightness(40%);
+		filter: brightness(40%);
+	}
+	ul {
+		li {
+			display: inline;
+			a {
+			}
+		}
+	}
+}
+#noticias {
+	.card-body {
+		max-height: 210px;
+	}
+	img {
+		max-height: 130px;
+	}
+}
+
+.btn-circle.btn-sm {
+	width: 30px;
+	height: 30px;
+	padding: 6px 0px;
+	border-radius: 15px;
+	font-size: 14px;
+	text-align: center;
+}
+
+.botones {
+	ul {
+		display: inline-block;
+		list-style: none;
+		padding: 0;
+	}
+}

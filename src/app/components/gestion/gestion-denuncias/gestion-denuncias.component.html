@@ -1,1 +1,71 @@
-<p>gestion-denuncias works!</p>
+<div class="container">
+  <div class="row mt-3 mb-5">
+    <div class="col-4 text-center">
+      <h3>
+        Motivo de denuncia
+      </h3>
+      <hr />
+      <ul>
+        <li>
+          <button
+            class="btn btn-block btn-info"
+            routerLink="/denuncias/transparencia"
+          >
+            Ley de transparencia
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-block btn-primary"
+            routerLink="/denuncias/laboral"
+          >
+            Relaciones laborales
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-block btn-warning text-white"
+            routerLink="/denuncias/seguridad"
+          >
+            Seguridad
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-block btn-success"
+            routerLink="/denuncias/ambiente"
+          >
+            Medio ambiente
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-block btn-info"
+            routerLink="/denuncias/comunidad"
+          >
+            Comunidad
+          </button>
+        </li>
+        <li>
+          <button
+            class="btn btn-block btn-danger"
+            routerLink="/denuncias/disconformidad"
+          >
+            Disconformidad con el servicio
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="col-8 text-right mt-2">
+      <button
+        class="btn btn-lg btn-primary mr-3"
+        routerLink="/historial-denuncias"
+      >
+        <i class="far fa-clock"></i> HISTORIAL
+      </button>
+      <button class="btn btn-lg btn-danger" routerLink="/denuncias-pendientes">
+        DENUNCIAS POR RESOLVER
+      </button>
+    </div>
+  </div>
+</div>

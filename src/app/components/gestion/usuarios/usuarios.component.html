@@ -1,1 +1,68 @@
-<p>usuarios works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-3 mb-3">
+      <h2>Usuarios</h2>
+    </div>
+    <div class="col-12 mb-3">
+      <table class="table">
+        <thead class="thead-primary">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Email</th>
+            <th scope="col">Rol de usuario</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let usuario of usuarios
+                | paginate: { itemsPerPage: 5, currentPage: p }
+            "
+          >
+            <td>{{ usuario.name }}</td>
+            <td>{{ usuario.surname }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>
+              <select
+                [(ngModel)]="usuario.role"
+                name="role"
+                class="form-control"
+              >
+                <option value="ADMIN">ADMIN</option>
+                <option value="USER">USER</option>
+              </select>
+            </td>
+            <td>
+              <button
+                class="btn btn-warning"
+                type="submit"
+                (click)="usuarioUpdate(usuario)"
+              >
+                <i class="fas fa-edit"></i>
+              </button>
+            </td>
+            <td>
+              <button
+                class="btn btn-danger"
+                type="submit"
+                (click)="usuarioDelete(usuario.id)"
+              >
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-12">
+      <pagination-controls
+        (pageChange)="p = $event"
+        previousLabel="Anterior"
+        nextLabel="Siguiente"
+      ></pagination-controls>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-4 mb-2"><h2>
+            <i class="fa fa-clock" aria-hidden="true"></i>
+            Historial de denuncias
+        </h2></div>
+
+        <div class="col-12">
+
+            <div *ngIf="denuncias">
+                <div *ngIf="denuncias.length == 0" class="alert alert-info">
+                    No hay denuncias por este motivo actualmente
+                </div>
+            </div>
+            
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Ticket</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Motivo</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let denuncia of denuncias | paginate: { itemsPerPage: 5, currentPage: p }"
+                    [ngClass]="{'bg-success text-white': denuncia.finalizada == 1}">
+                        <th scope="row">{{denuncia.ticket}}</th>
+                        <td>{{denuncia.nombre}}</td>
+                        <td>{{denuncia.motivo}}</td>
+                        <td>{{denuncia.created_at | date: 'dd-MM-yyyy'}}</td>
+                        <td>
+                            <button class="btn btn-primary text-uppercase" [routerLink]="['/denuncia', denuncia.id]">Ver Detalles</button>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 text-center mb-3">
+            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+        </div>
+    </div>
+</div>

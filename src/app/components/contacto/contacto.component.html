@@ -13,73 +13,45 @@
     </div>
   </div>
 
-  <form class="form-row mb-4">
+  <form class="form-row mb-4" #contactoNuevo="ngForm" (ngSubmit)="crearContacto(contactoNuevo.value)">
     <div class="col-4">
       <h4 class="pb-0 mb-0">1. Datos de contacto</h4>
       <p><small>* Campos requeridos</small></p>
 
       <label for="nombre">Nombre*</label>
-      <input type="text" name="nombre" class="form-control" />
+      <input type="text" name="nombre" class="form-control" #nombre="ngModel" [(ngModel)]="contacto.nombre" required />
       <label for="email">Email*</label>
-      <input type="email" name="email" class="form-control" />
+      <input type="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="contacto.email" required />
       <label for="telefono">Telefono*</label>
-      <input type="tel" name="telefono" class="form-control" />
+      <input type="tel" name="telefono" class="form-control" #telefono="ngModel" [(ngModel)]="contacto.telefono" required />
 
       <h4 class="mt-2">2. Motivo de contacto</h4>
 
       <label for="motivo">Seleccione una opción*</label>
       <div class="form-check">
-        <input
-          [(ngModel)]="opcionSeleccionada"
-          (change)="capturar(opcionSeleccionada)"
-          class="form-check-input"
-          type="radio"
-          name="exampleRadios"
-          id="exampleRadios1"
-          value="option1"
-        />
+        <input [(ngModel)]="opcionSeleccionada" (change)="capturar(opcionSeleccionada)" class="form-check-input"
+          type="radio" name="exampleRadios" id="exampleRadios1" value="Trabajo" />
         <label class="form-check-label" for="exampleRadios1">
           Trabaje con nosotros
         </label>
       </div>
       <div class="form-check">
-        <input
-          [(ngModel)]="opcionSeleccionada"
-          (change)="capturar(opcionSeleccionada)"
-          class="form-check-input"
-          type="radio"
-          name="exampleRadios"
-          id="exampleRadios2"
-          value="option2"
-        />
+        <input [(ngModel)]="opcionSeleccionada" (change)="capturar(opcionSeleccionada)" class="form-check-input"
+          type="radio" name="exampleRadios" id="exampleRadios2" value="Proveedor" />
         <label class="form-check-label" for="exampleRadios2">
           Inscribase como proveedor
         </label>
       </div>
       <div class="form-check">
-        <input
-          [(ngModel)]="opcionSeleccionada"
-          (change)="capturar(opcionSeleccionada)"
-          class="form-check-input"
-          type="radio"
-          name="exampleRadios"
-          id="exampleRadios3"
-          value="option3"
-        />
+        <input [(ngModel)]="opcionSeleccionada" (change)="capturar(opcionSeleccionada)" class="form-check-input"
+          type="radio" name="exampleRadios" id="exampleRadios3" value="Cotizacion" />
         <label class="form-check-label" for="exampleRadios2">
           Solicite una cotización
         </label>
       </div>
       <div class="form-check">
-        <input
-          [(ngModel)]="opcionSeleccionada"
-          (change)="capturar(opcionSeleccionada)"
-          class="form-check-input"
-          type="radio"
-          name="exampleRadios"
-          id="exampleRadios4"
-          value="option4"
-        />
+        <input [(ngModel)]="opcionSeleccionada" (change)="capturar(opcionSeleccionada)" class="form-check-input"
+          type="radio" name="exampleRadios" id="exampleRadios4" value="Otro" />
         <label class="form-check-label" for="exampleRadios2">
           Otro motivo
         </label>
@@ -87,36 +59,35 @@
     </div>
 
     <div class="col-4">
-      <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'option1'">
+      <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'Trabajo'">
         <h4>3. Datos para postulación</h4>
         <label>Cargo de postulación*</label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" name="cargo" #cargo="ngModel" [(ngModel)]="contacto.cargo" required/>
         <label>Pretensiones de renta</label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" name="pretension_renta" #pretension_renta="ngModel" [(ngModel)]="contacto.pretension_renta"/>
+        <label>Curriculum</label>
+        <angular-file-uploader [config]="afuConfig" [resetUpload]="resetVar" (ApiResponse)="curriculumUpload($event)">
+        </angular-file-uploader>
       </div>
-      <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'option2'">
-        <h4>3. Información proveedor</h4>
 
+      <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'Proveedor'">
+        <h4>3. Información proveedor</h4>
         <label>RUT Empresa*</label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" name="rut" #rut="ngModel" [(ngModel)]="contacto.rut" required/>
         <label>Razón Social*</label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" name="razon_social" #razon_social="ngModel" [(ngModel)]="contacto.razon_social" required/>
         <label>Producto o servicio ofrecido*</label>
-        <textarea type="text" class="form-control"></textarea>
+        <textarea type="text" class="form-control" name="producto_proveedor" #producto_proveedor="ngModel" [(ngModel)]="contacto.producto_proveedor" required></textarea>
       </div>
-      <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'option3'">
+
+      <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'Cotizacion'">
         <h4>3. Empresa y servicio requerido</h4>
         <label>RUT Empresa*</label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" name="rut" #rut="ngModel" [(ngModel)]="contacto.rut" required/>
         <label>Razón Social*</label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" name="razon_social" #razon_social="ngModel" [(ngModel)]="contacto.razon_social" required/>
         <label>Servicio Solicitado*</label>
-        <select
-          class="form-control"
-          [(ngModel)]="servicio"
-          name="servicio"
-          (change)="capturarServicio(servicio)"
-        >
+        <select class="form-control" [(ngModel)]="servicio" name="servicio" (change)="capturarServicio(servicio)">
           <option value="transporte">Transporte</option>
           <option value="arriendo">Arriendo de Equipos</option>
           <option value="bodega">Operación de Bodega</option>
@@ -124,41 +95,35 @@
 
         <div class="animated fadeIn" *ngIf="servicio == 'arriendo'">
           <label>Tipo de equipo</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" name="tipo_equipo" #tipo_equipo="ngModel" [(ngModel)]="contacto.tipo_equipo"/>
         </div>
       </div>
-      <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'option4'">
+
+      <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'Otro'">
         <h4>3. Mensaje</h4>
         <label>Asunto</label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" name="asunto" #asunto="ngModel" [(ngModel)]="contacto.asunto"/>
         <label>Mensaje*</label>
-        <textarea type="text" class="form-control"></textarea>
+        <textarea type="text" class="form-control" name="mensaje" #mensaje="ngModel" [(ngModel)]="contacto.mensaje" required></textarea>
       </div>
       <div *ngIf="opcionSeleccionada" class="text-center mt-5 animated fadeIn">
-        <button class="btn btn-lg btn-success">
+        <button class="btn btn-lg btn-success" [disabled]="contactoNuevo.invalid">
           <i class="fas fa-paper-plane"></i> Enviar
         </button>
       </div>
     </div>
+
     <div class="col-4">
-      <div
-        class="animated fadeIn"
-        *ngIf="servicio == 'transporte' && opcionSeleccionada === 'option3'"
-      >
+      <div class="animated fadeIn" *ngIf="servicio == 'transporte' && opcionSeleccionada === 'Cotizacion'">
         <h4>4. Información necesaria</h4>
         <label>Tipo de equipo*</label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control"  name="tipo_equipo" #tipo_equipo="ngModel" [(ngModel)]="contacto.tipo_equipo" required/>
         <label>Origen*</label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control"  name="origen" #origen="ngModel" [(ngModel)]="contacto.origen" required/>
         <label>Destino*</label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control"  name="destino" #destino="ngModel" [(ngModel)]="contacto.destino" required/>
         <label>Descripción de carga*</label>
-        <textarea
-          name="carga"
-          id="carga"
-          rows="3"
-          class="form-control"
-        ></textarea>
+        <textarea name="carga" id="carga" rows="3" class="form-control" name="carga" #carga="ngModel" [(ngModel)]="contacto.carga" required></textarea>
       </div>
     </div>
   </form>

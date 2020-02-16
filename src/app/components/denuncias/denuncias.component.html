@@ -14,17 +14,42 @@
     </div>
   </div>
 
-  <form class="form-row mb-4">
+  <form
+    class="form-row mb-4"
+    #denunciaNueva="ngForm"
+    (ngSubmit)="crearDenuncia(denunciaNueva.value)"
+  >
     <div class="col-4">
       <h4 class="pb-0 mb-0">1. Datos de contacto</h4>
       <p><small>* Campos requeridos</small></p>
 
       <label for="nombre">Nombre*</label>
-      <input type="text" name="nombre" class="form-control" />
+      <input
+        type="text"
+        name="nombre"
+        class="form-control"
+        #nombre="ngModel"
+        [(ngModel)]="denuncia.nombre"
+        required
+      />
       <label for="email">Email*</label>
-      <input type="email" name="email" class="form-control" />
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        #email="ngModel"
+        [(ngModel)]="denuncia.email"
+        required
+      />
       <label for="telefono">Telefono*</label>
-      <input type="tel" name="telefono" class="form-control" />
+      <input
+        type="tel"
+        name="telefono"
+        class="form-control"
+        #telefono="ngModel"
+        [(ngModel)]="denuncia.telefono"
+        required
+      />
 
       <h4 class="mt-2">2. Motivo de denuncia</h4>
 
@@ -37,7 +62,7 @@
           type="radio"
           name="exampleRadios"
           id="exampleRadios1"
-          value="option1"
+          value="Ley de transparencia"
         />
         <label class="form-check-label" for="exampleRadios1">
           Ley de transparencia
@@ -51,7 +76,7 @@
           type="radio"
           name="exampleRadios"
           id="exampleRadios2"
-          value="option2"
+          value="Relaciones laborales"
         />
         <label class="form-check-label" for="exampleRadios2">
           Relaciones laborales
@@ -65,7 +90,7 @@
           type="radio"
           name="exampleRadios"
           id="exampleRadios3"
-          value="option3"
+          value="Seguridad"
         />
         <label class="form-check-label" for="exampleRadios3">
           Seguridad
@@ -79,7 +104,7 @@
           type="radio"
           name="exampleRadios"
           id="exampleRadios4"
-          value="option4"
+          value="Medio ambiente"
         />
         <label class="form-check-label" for="exampleRadios4">
           Medio Ambiente
@@ -93,7 +118,7 @@
           type="radio"
           name="exampleRadios"
           id="exampleRadios5"
-          value="option5"
+          value="Comunidad"
         />
         <label class="form-check-label" for="exampleRadios5">
           Comunidad
@@ -107,7 +132,7 @@
           type="radio"
           name="exampleRadios"
           id="exampleRadios6"
-          value="option6"
+          value="Disconformidad con el servicio"
         />
         <label class="form-check-label" for="exampleRadios6">
           Disconformidad con el servicio
@@ -119,33 +144,73 @@
       <div
         class="animated fadeIn"
         *ngIf="
-          opcionSeleccionada == 'option1' ||
-          opcionSeleccionada == 'option2' ||
-          opcionSeleccionada == 'option3' ||
-          opcionSeleccionada == 'option4' ||
-          opcionSeleccionada == 'option5'
+          opcionSeleccionada == 'Ley de transparencia' ||
+          opcionSeleccionada == 'Relaciones laborales' ||
+          opcionSeleccionada == 'Seguridad' ||
+          opcionSeleccionada == 'Medio ambiente' ||
+          opcionSeleccionada == 'Comunidad'
         "
       >
         <h4>3. Información de denuncia</h4>
         <label>Descripción de denuncia*</label>
-        <textarea class="form-control" rows="6"></textarea>
+        <textarea
+          class="form-control"
+          rows="6"
+          name="denuncia"
+          [(ngModel)]="denuncia.denuncia"
+          required
+        ></textarea>
         <label class="pt-1">Antecedentes de Respaldo</label>
-        <input type="file" class="form-control-file" />
+        <angular-file-uploader
+          [config]="afuConfig"
+          [resetUpload]="resetVar"
+          (ApiResponse)="antecedenteUpload($event)"
+        >
+        </angular-file-uploader>
       </div>
-      <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'option6'">
+      <div
+        class="animated fadeIn"
+        *ngIf="opcionSeleccionada == 'Disconformidad con el servicio'"
+      >
         <h4>3. Información de reclamo</h4>
         <label>Razón social</label>
-        <input type="text" class="form-control" />
+        <input
+          type="text"
+          class="form-control"
+          name="razon_social"
+          #razon_social="ngModel"
+          [(ngModel)]="denuncia.razon_social"
+        />
         <label>RUT</label>
-        <input type="text" class="form-control" />
+        <input
+          type="text"
+          class="form-control"
+          name="rut"
+          #rut="ngModel"
+          [(ngModel)]="denuncia.rut"
+        />
         <label>Descripción de reclamo*</label>
-        <textarea class="form-control" rows="6"></textarea>
+        <textarea
+          class="form-control"
+          rows="6"
+          name="reclamo"
+          [(ngModel)]="denuncia.reclamo"
+          required
+        ></textarea>
         <label class="pt-1">Antecedentes de Respaldo</label>
-        <input type="file" class="form-control-file" />
+        <angular-file-uploader
+          [config]="afuConfig"
+          [resetUpload]="resetVar"
+          (ApiResponse)="antecedenteUpload($event)"
+        >
+        </angular-file-uploader>
       </div>
 
       <div *ngIf="opcionSeleccionada" class="text-center mt-5 animated fadeIn">
-        <button class="btn btn-lg btn-success">
+        <button
+          class="btn btn-lg btn-success"
+          [disabled]="denunciaNueva.invalid"
+        >
           <i class="fas fa-paper-plane"></i> Enviar
         </button>
       </div>

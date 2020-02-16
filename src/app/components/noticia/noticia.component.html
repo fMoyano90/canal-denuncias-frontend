@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row mt-3 mb-5">
+        <div class="col-4">
+            <img [src]="noticia.imagen | imagen: 'noticia'" class="img-fluid">
+
+        </div>
+        <div class="col-8" *ngIf="noticia">
+            <h1>{{noticia.titulo}}</h1>
+            <p class="text-black-50">{{noticia.created_at | date:"dd-mm-yyyy"}} | {{noticia.categoria}}</p>
+            <p>{{noticia.descripcion}}</p>
+            <p [innerHTML]="noticia.cuerpo"></p>
+        </div>
+    </div>
+</div>

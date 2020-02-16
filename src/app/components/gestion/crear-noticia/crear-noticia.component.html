@@ -1,1 +1,113 @@
-<p>crear-noticia works!</p>
+<div class="container mb-3">
+  <div class="col-md-12 mt-3">
+    <h3 *ngIf="update">Editar noticia</h3>
+    <h3 *ngIf="!update">Crea una nueva noticia</h3>
+    <hr />
+    <!--Mensajes de alerta -->
+
+    <form
+      class="form-row"
+      #noticiaNueva="ngForm"
+      (ngSubmit)="onSubmit(noticiaNueva.value)"
+    >
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="titulo">Categoria</label>
+          <input
+            type="text"
+            name="categoria"
+            #categoria="ngModel"
+            [(ngModel)]="noticia.categoria"
+            class="form-control"
+            required
+          />
+          <small
+            *ngIf="!categoria.valid && categoria.touched"
+            class="invalid-feedback d-block"
+          >
+            La categoria es requerido para la noticia.
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="descripcion">Texto breve</label>
+          <textarea name="descripcion" #descripcion="ngModel" [(ngModel)]="noticia.descripcion" cols="30" rows="5" class="form-control" required></textarea>
+        
+          <small *ngIf="!descripcion.valid && descripcion.touched" class="invalid-feedback d-block">
+            El texto breve es requerido para la noticia. (Máximo 110 caracteres)
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="titulo">Título</label>
+          <input
+            type="text"
+            name="titulo"
+            #titulo="ngModel"
+            [(ngModel)]="noticia.titulo"
+            class="form-control"
+            required
+          />
+          <small
+            *ngIf="!titulo.valid && titulo.touched"
+            class="invalid-feedback d-block"
+          >
+            El título es requerido para la noticia.
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="imagen">Imagen</label>
+          <angular-file-uploader
+            [config]="afuConfig"
+            [resetUpload]="resetVar"
+            (ApiResponse)="imageUpload($event)"
+          >
+          </angular-file-uploader>
+        </div>
+        <div class="form-group">
+          <label for="principal">¿Noticia principal?</label>
+          <select
+            name="principal"
+            #principal="ngModel"
+            [(ngModel)]="noticia.principal"
+            class="form-control col-2"
+            required
+          >
+            <option value="1">Si</option>
+            <option value="0" selected>No</option>
+          </select>
+        </div>
+        <button
+          *ngIf="!update"
+          class="btn btn-success btn-block mt-4"
+          [disabled]="noticiaNueva.invalid"
+        >
+          <b>CREAR NOTICIA</b>
+        </button>
+        <button
+        *ngIf="update"
+          class="btn btn-success btn-block mt-4"
+          [disabled]="noticiaNueva.invalid"
+        >
+          <b>EDITAR NOTICIA</b>
+        </button>
+      </div>
+      <div class="col-md-7">
+        <div class="form-group">
+          <label for="cuerpo">Contenido</label>
+          <editor
+            [init]="options"
+            name="cuerpo"
+            #cuerpo="ngModel"
+            [(ngModel)]="noticia.cuerpo"
+            required
+          ></editor>
+          <small
+            *ngIf="!cuerpo.valid && cuerpo.touched"
+            class="invalid-feedback d-block"
+          >
+            El contenido es requerido para la noticia.
+          </small>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

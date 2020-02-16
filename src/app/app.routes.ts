@@ -11,10 +11,17 @@ import { ContactoComponent } from "./components/contacto/contacto.component";
 import { DenunciasComponent } from "./components/denuncias/denuncias.component";
 import { UsuariosComponent } from "./components/gestion/usuarios/usuarios.component";
 import { GestionDenunciasComponent } from "./components/gestion/gestion-denuncias/gestion-denuncias.component";
-import { GestionNoticiasComponent } from "./components/gestion/gestion-noticias/gestion-noticias.component";
 import { GestionContenidoComponent } from "./components/gestion/gestion-contenido/gestion-contenido.component";
 import { LoginComponent } from "./components/gestion/login/login.component";
 import { TrabajoComponent } from "./components/trabajo/trabajo.component";
+import { RegisterComponent } from "./components/gestion/register/register.component";
+import { CrearNoticiaComponent } from "./components/gestion/crear-noticia/crear-noticia.component";
+import { EditarNoticiaComponent } from "./components/gestion/editar-noticia/editar-noticia.component";
+import { NoticiaComponent } from "./components/noticia/noticia.component";
+import { HistorialDenunciasComponent } from "./components/gestion/historial-denuncias/historial-denuncias.component";
+import { DenunciasPendientesComponent } from "./components/gestion/denuncias-pendientes/denuncias-pendientes.component";
+import { CategoriaDenunciaComponent } from "./components/gestion/categoria-denuncia/categoria-denuncia.component";
+import { DetalleDenunciaComponent } from "./components/gestion/detalle-denuncia/detalle-denuncia.component";
 
 const APP_ROUTES: Routes = [
   // Paginas publicas
@@ -25,16 +32,24 @@ const APP_ROUTES: Routes = [
   { path: "almacenamiento", component: AlmacenamientoComponent },
   { path: "sustentabilidad", component: SustentabilidadComponent },
   { path: "noticias", component: NoticiasComponent },
+  { path: "noticia/:id", component: NoticiaComponent },
   { path: "galeria", component: GaleriaComponent },
   { path: "contacto", component: ContactoComponent },
   { path: "denuncias", component: DenunciasComponent },
+  { path: "historial-denuncias", component: HistorialDenunciasComponent },
+  { path: "denuncias-pendientes", component: DenunciasPendientesComponent },
+  { path: "denuncias/:categoria", component: CategoriaDenunciaComponent },
+  { path: "denuncia/:id", component: DetalleDenunciaComponent },
   { path: "trabaja-con-nosotros", component: TrabajoComponent },
   // Gestión de contenidos
   { path: "gestion-usuarios", component: UsuariosComponent },
   { path: "gestion-denuncias", component: GestionDenunciasComponent },
-  { path: "gestion-noticias", component: GestionNoticiasComponent },
+  { path: "nueva-noticia", component: CrearNoticiaComponent },
+  { path: "editar-noticia/:id", component: EditarNoticiaComponent },
   { path: "gestion-contenido", component: GestionContenidoComponent },
   { path: "login", component: LoginComponent },
+  { path: "logout/:sure", component: LoginComponent },
+  { path: "registro", component: RegisterComponent },
   // Default
   { path: "**", pathMatch: "full", redirectTo: "/inicio" }
 ];

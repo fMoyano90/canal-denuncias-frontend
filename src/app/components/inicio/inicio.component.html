@@ -251,57 +251,18 @@
     <aside class="col-3 text-center pt-3 mb-3">
       <h3>Últimas Noticias</h3>
       <hr />
-      <div class="card mb-3">
-        <img src="assets/img/s1.jpg" class="card-img-top" alt="..." />
+      <div class="card mb-3" *ngFor="let noticia of noticias | paginate: { itemsPerPage: 3, currentPage: p }">
+        <img [src]=" noticia.imagen | imagen: 'noticia'" class="card-img-top" alt="..." />
         <div class="card-body pt-2">
           <h5 class="card-title text-left">
-            Lorem ipsum dolor sit amet consectetur
+            {{noticia.titulo}}
             <br />
             <small>
-              29/01/2020
+              {{noticia.created_at | date:"dd-MM-yyyy"}} | {{noticia.categoria}}
             </small>
           </h5>
           <p class="card-text text-left">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary btn-block"
-            ><i class="far fa-eye"></i> Ver Mas</a
-          >
-        </div>
-      </div>
-      <div class="card mb-3">
-        <img src="assets/img/s2.jpg" class="card-img-top" alt="..." />
-        <div class="card-body pt-2">
-          <h5 class="card-title text-left">
-            Lorem ipsum dolor sit amet consectetur
-            <br />
-            <small>
-              29/01/2020
-            </small>
-          </h5>
-          <p class="card-text text-left">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary btn-block"
-            ><i class="far fa-eye"></i> Ver Mas</a
-          >
-        </div>
-      </div>
-      <div class="card mb-3">
-        <img src="assets/img/s3.jpg" class="card-img-top" alt="..." />
-        <div class="card-body pt-2">
-          <h5 class="card-title text-left">
-            Lorem ipsum dolor sit amet consectetur
-            <br />
-            <small>
-              29/01/2020
-            </small>
-          </h5>
-          <p class="card-text text-left">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            {{noticia.descripcion}}
           </p>
           <a href="#" class="btn btn-primary btn-block"
             ><i class="far fa-eye"></i> Ver Mas</a
