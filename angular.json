@@ -69,18 +69,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "canal-denuncias:build"
+            "buildTarget": "canal-denuncias:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "canal-denuncias:build:production"
+              "buildTarget": "canal-denuncias:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "canal-denuncias:build"
+            "buildTarget": "canal-denuncias:build"
           }
         },
         "test": {
