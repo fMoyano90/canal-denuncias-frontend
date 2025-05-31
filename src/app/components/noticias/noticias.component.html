@@ -1,31 +1,12 @@
 <div class="container animated fadeIn">
   <div class="row mt-3">
-    <div class="col-8" *ngIf="principal">
-      <div class="card bg-dark text-white" id="noticiaPrincipal">
-        <img [src]="principal[0].imagen | imagen: 'noticia'" class="card-img" alt="..." />
-        <div class="card-img-overlay">
-          <h2 class="card-title">{{principal[0].titulo}}</h2>
-          <p class="card-text" [innerHTML]="principal[0].descripcion">
-          </p>
-          <p class="card-text mt-5">{{principal[0].created_at | date:"dd-MM-yyyy"}} | {{principal[0].categoria}}</p>
-          <button class="btn btn-primary" [routerLink]="['/noticia', principal[0].id]">
-            <i class="fas fa-eye"></i> VER MÁS
-          </button>
-          <div class="row" *ngIf="identity && identity.role == 'ADMIN'">
-            <div class="col-12 mt-3">
-              <button class="btn btn-warning btn-sm btn-circle" [routerLink]="['/editar-noticia/', principal[0].id]">
-                <i class="fa fa-edit"></i>
-              </button>
-              <button class="btn btn-danger btn-sm btn-circle ml-1" (click)="eliminarNoticia(principal[0].id)">
-                <i class="fa fa-trash"></i>
-              </button>
-            </div>
-          </div>
-    
-        </div>
+    <div class="col-8">
+      <!-- Alerta de nueva sección -->
+      <div class="alert alert-info" style="background-color: #d1ecf1; border-color: #bee5eb; color: #0c5460;">
+        <strong>¡Nueva sección!</strong> Pronto podrá conocer las noticias más actualizadas de la compañía.
       </div>
     </div>
-    <div class="col-4 text-center mt-4">
+    <div class="col-4 text-center">
       <div class="card">
         <div class="card-body">
           <h2><i class="fas fa-calendar-day"></i></h2>
@@ -38,51 +19,19 @@
       </div>
     </div>
   </div>
-  <div class="row mt-4">
-    <div class="col-6" *ngFor="let noticia of noticias | paginate: { itemsPerPage: 4, currentPage: p }" id="noticias"> 
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img [src]="noticia.imagen | imagen: 'noticia'" class="card-img img-fluid" alt="..." />
-            <button
-              class="btn btn-block btn-primary"
-              style="border-radius: 0 !important;"
-              [routerLink]="['/noticia', noticia.id]"
-            >
-              <i class="fas fa-eye"></i> VER MÁS
-            </button>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{noticia.titulo}}</h5>
-              <p class="card-text" [innerHTML]="noticia.descripcion">
-                
-              </p>
-              <div class="botones">
-                <ul>
-                  <li>
-                    <p class="card-text">
-                      <small class="text-muted">{{noticia.created_at | date:"dd-MM-yyyy"}} | {{noticia.categoria}}</small>
-                    </p>
-                  </li>
-                  <li *ngIf="identity && identity.role == 'ADMIN'">
-                    <button class="btn btn-warning btn-sm btn-circle" [routerLink]="['/editar-noticia/', noticia.id]">
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button class="btn btn-danger btn-sm btn-circle ml-1" (click)="eliminarNoticia(noticia.id)">
-                      <i class="fa fa-trash"></i>
-                    </button>
-                  </li>
-                </ul>
-              </div>
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="row mt-4">
     <div class="col-12 text-center">
-      <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+      <nav>
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <span class="page-link">« Anterior</span>
+          </li>
+          <li class="page-item disabled">
+            <span class="page-link">Siguiente »</span>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </div>

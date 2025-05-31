@@ -5,10 +5,7 @@
         Canal de denuncias
       </h3>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim velit
-        cupiditate quae iste? Officia quibusdam ad incidunt quia quae molestiae.
-        Eaque dicta reprehenderit veniam, numquam adipisci id eos aspernatur
-        sit.
+        Si tienes alguna queja o una situación que necesite ser resuelta por favor abre un ticket en nuestro canal de denuncias y pronto te atenderemos.
       </p>
       <hr />
     </div>
@@ -161,12 +158,11 @@
           required
         ></textarea>
         <label class="pt-1">Antecedentes de Respaldo</label>
-        <angular-file-uploader
-          [config]="afuConfig"
-          [resetUpload]="resetVar"
-          (ApiResponse)="antecedenteUpload($event)"
-        >
-        </angular-file-uploader>
+        <app-file-upload 
+          accept=".pdf,.doc,.docx,.jpg,.png" 
+          [multiple]="true"
+          (filesDropped)="antecedenteUpload($event)">
+        </app-file-upload>
       </div>
       <div
         class="animated fadeIn"
@@ -198,12 +194,11 @@
           required
         ></textarea>
         <label class="pt-1">Antecedentes de Respaldo</label>
-        <angular-file-uploader
-          [config]="afuConfig"
-          [resetUpload]="resetVar"
-          (ApiResponse)="antecedenteUpload($event)"
-        >
-        </angular-file-uploader>
+        <app-file-upload 
+          accept=".pdf,.doc,.docx,.jpg,.png" 
+          [multiple]="true"
+          (filesDropped)="antecedenteUpload($event)">
+        </app-file-upload>
       </div>
 
       <div *ngIf="opcionSeleccionada" class="text-center mt-5 animated fadeIn">

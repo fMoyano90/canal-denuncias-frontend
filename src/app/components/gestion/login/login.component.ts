@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { User } from "../../../models/user";
 import { UserService } from "../../../services/user.service";
-import _swal from "sweetalert";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-login",
@@ -53,18 +53,18 @@ export class LoginComponent implements OnInit {
             error => {
               this.status = "error";
               console.log(<any>error);
-              _swal("Error", "Las credenciales no son correctas.", "error");
+              Swal.fire("Error", "Las credenciales no son correctas.", "error");
             }
           );
         } else {
           this.status = "error";
-          _swal("Error", "Las credenciales no son correctas.", "error");
+          Swal.fire("Error", "Las credenciales no son correctas.", "error");
         }
       },
       error => {
         this.status = "error";
         console.log(<any>error);
-        _swal("Error", "Las credenciales no son correctas.", "error");
+        Swal.fire("Error", "Las credenciales no son correctas.", "error");
       }
     );
   }

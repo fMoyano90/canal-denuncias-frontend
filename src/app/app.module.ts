@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 // Configuración para Chile
 
@@ -41,8 +41,8 @@ import { ImageGalleryComponent } from './components/shared/image-gallery/image-g
 // Editor de texto enriquecido
 import { EditorModule } from '@tinymce/tinymce-angular';
 
-// Subir archivos
-import { NgxFileDropModule } from 'ngx-file-drop';
+// Subir archivos nativo
+import { FileUploadComponent } from './components/shared/file-upload/file-upload.component';
 
 // Paginación
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -62,46 +62,52 @@ import { DenunciasPendientesComponent } from './components/gestion/denuncias-pen
 import { CategoriaDenunciaComponent } from './components/gestion/categoria-denuncia/categoria-denuncia.component';
 import { DetalleDenunciaComponent } from './components/gestion/detalle-denuncia/detalle-denuncia.component';
 
-@NgModule({ declarations: [
-        AppComponent,
-        InicioComponent,
-        NavbarComponent,
-        FooterComponent,
-        EmpresaComponent,
-        TransporteComponent,
-        LogisticaComponent,
-        AlmacenamientoComponent,
-        SustentabilidadComponent,
-        NoticiasComponent,
-        GaleriaComponent,
-        ContactoComponent,
-        DenunciasComponent,
-        UsuariosComponent,
-        GestionDenunciasComponent,
-        GestionContenidoComponent,
-        LoginComponent,
-        TrabajoComponent,
-        CrearNoticiaComponent,
-        TicketComponent,
-        RegisterComponent,
-        ImagenPipe,
-        FilePipe,
-        CategoriaPipe,
-        EditarNoticiaComponent,
-        NoticiaComponent,
-        HistorialDenunciasComponent,
-        DenunciasPendientesComponent,
-        CategoriaDenunciaComponent,
-        DetalleDenunciaComponent,
-        ImageGalleryComponent
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        APP_ROUTING,
-        FormsModule,
-        EditorModule,
-        NgxFileDropModule,
-        NgxPaginationModule], providers: [
-        { provide: LOCALE_ID, useValue: 'es-Cl' },
-        provideHttpClient(withInterceptorsFromDi())
-    ] })
+@NgModule({
+	declarations: [
+		AppComponent,
+		InicioComponent,
+		NavbarComponent,
+		FooterComponent,
+		EmpresaComponent,
+		TransporteComponent,
+		LogisticaComponent,
+		AlmacenamientoComponent,
+		SustentabilidadComponent,
+		NoticiasComponent,
+		GaleriaComponent,
+		ContactoComponent,
+		DenunciasComponent,
+		UsuariosComponent,
+		GestionDenunciasComponent,
+		GestionContenidoComponent,
+		LoginComponent,
+		TrabajoComponent,
+		CrearNoticiaComponent,
+		TicketComponent,
+		RegisterComponent,
+		ImagenPipe,
+		FilePipe,
+		CategoriaPipe,
+		EditarNoticiaComponent,
+		NoticiaComponent,
+		HistorialDenunciasComponent,
+		DenunciasPendientesComponent,
+		CategoriaDenunciaComponent,
+		DetalleDenunciaComponent,
+		ImageGalleryComponent,
+		FileUploadComponent
+	],
+	imports: [
+		BrowserModule,
+		APP_ROUTING,
+		FormsModule,
+		HttpClientModule,
+		EditorModule,
+		NgxPaginationModule
+	],
+	providers: [
+		{ provide: LOCALE_ID, useValue: 'es-Cl' }
+	],
+	bootstrap: [ AppComponent ]
+})
 export class AppModule {}

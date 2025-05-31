@@ -3,8 +3,10 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { Noticia } from '../../../models/noticia';
 import { NoticiaService } from '../../../services/noticia.service';
-import _swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import { global } from '../../../services/global';
+
+const swal = Swal;
 
 @Component({
 	selector: 'app-crear-noticia',
@@ -75,10 +77,14 @@ export class CrearNoticiaComponent implements OnInit {
 		console.log(this.token);
 	}
 
-	imageUpload(data) {
-		const imagen_data = JSON.parse(data.response);
-		console.log(imagen_data);
-		this.noticia.imagen = imagen_data.imagen;
+	imageUpload(files: File[]) {
+		console.log('Archivos de imagen recibidos:', files);
+		if (files && files.length > 0) {
+			const file = files[0];
+			console.log('Imagen seleccionada:', file.name);
+			// Aquí puedes implementar la lógica de subida de imagen
+			// this.noticia.imagen = file;
+		}
 	}
 
 	onSubmit(form) {
@@ -87,14 +93,14 @@ export class CrearNoticiaComponent implements OnInit {
 			(response) => {
 				if (response.status == 'success') {
 					this.noticia = response.noticia;
-					_swal('¡Buen Trabajo!', 'La noticia fue creada exitosamente.', 'success');
+					swal.fire('¡Buen Trabajo!', 'La noticia fue creada exitosamente.', 'success');
 					setTimeout(() => {
 						this._router.navigate([ '/noticias' ]);
 					}, 2000);
 				}
 			},
 			(error) => {
-				_swal('Error', 'La noticia no pudo ser creada. ¡Intenta de nuevo!', 'error');
+				swal.fire('Error', 'La noticia no pudo ser creada. ¡Intenta de nuevo!', 'error');
 				console.log(error);
 			}
 		);

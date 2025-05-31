@@ -1,145 +1,194 @@
-import { Component, OnInit } from "@angular/core";
-import {
-  NgxGalleryOptions,
-  NgxGalleryImage,
-  NgxGalleryAnimation
-} from "ngx-gallery";
+import { Component, OnInit } from '@angular/core';
+import { GalleryImage } from '../shared/image-gallery/image-gallery.component';
 
 @Component({
-  selector: "app-transporte",
-  templateUrl: "./transporte.component.html",
-  styleUrls: ["./transporte.component.scss"]
+  selector: 'app-transporte',
+  templateUrl: './transporte.component.html',
+  styleUrls: ['./transporte.component.css']
 })
 export class TransporteComponent implements OnInit {
-  galleryOptions: NgxGalleryOptions[];
-  galleryImages: NgxGalleryImage[];
-  galleryImages2: NgxGalleryImage[];
-  galleryImages3: NgxGalleryImage[];
-  galleryImages4: NgxGalleryImage[];
-  galleryImages5: NgxGalleryImage[];
-  galleryImages6: NgxGalleryImage[];
 
-  constructor() {}
+  galleryImages: GalleryImage[] = [
+    { 
+      small: 'assets/img/t3.jpg',
+      medium: 'assets/img/t3.jpg', 
+      big: 'assets/img/t3.jpg',
+      description: 'Transporte de Carga General' 
+    },
+    { 
+      small: 'assets/img/t4.jpg',
+      medium: 'assets/img/t4.jpg', 
+      big: 'assets/img/t4.jpg',
+      description: 'Equipos de Transporte' 
+    },
+    { 
+      small: 'assets/img/t5.jpg',
+      medium: 'assets/img/t5.jpg', 
+      big: 'assets/img/t5.jpg',
+      description: 'Camiones Articulados' 
+    },
+    { 
+      small: 'assets/img/tg-1.jpg',
+      medium: 'assets/img/tg-1.jpg', 
+      big: 'assets/img/tg-1.jpg',
+      description: 'Flota de Vehículos' 
+    },
+    { 
+      small: 'assets/img/tg-2.jpeg',
+      medium: 'assets/img/tg-2.jpeg', 
+      big: 'assets/img/tg-2.jpeg',
+      description: 'Transporte de Sustancias Peligrosas' 
+    },
+    { 
+      small: 'assets/img/tg-3.jpg',
+      medium: 'assets/img/tg-3.jpg', 
+      big: 'assets/img/tg-3.jpg',
+      description: 'Transporte de Sustancias Peligrosas' 
+    }
+  ];
 
-  ngOnInit(): void {
-    this.galleryOptions = [
-      {
-        width: "530px",
-        height: "400px",
-        imageDescription: false,
-        previewDescription: false,
-        thumbnails: false,
-        imageAnimation: NgxGalleryAnimation.Rotate
-      },
-      // max-width 800
-      {
-        breakpoint: 800,
-        width: "100%",
-        height: "600px",
-        imagePercent: 80,
-        thumbnailsPercent: 20,
-        thumbnailsMargin: 20,
-        thumbnailMargin: 20
-      },
-      // max-width 400
-      {
-        breakpoint: 400,
-        preview: false
-      }
-    ];
+  galleryImages2: GalleryImage[] = [
+    { 
+      small: 'assets/img/t1.jpg',
+      medium: 'assets/img/t1.jpg', 
+      big: 'assets/img/t1.jpg',
+      description: 'Transporte a Granel' 
+    },
+    { 
+      small: 'assets/img/t2.jpg',
+      medium: 'assets/img/t2.jpg', 
+      big: 'assets/img/t2.jpg',
+      description: 'Camiones Tolva' 
+    }
+  ];
 
-    this.galleryImages = [
-      {
-        small: "assets/img/t3.jpg",
-        medium: "assets/img/t3.jpg",
-        big: "assets/img/t3.jpg"
-      },
-      {
-        small: "assets/img/t4.jpg",
-        medium: "assets/img/t4.jpg",
-        big: "assets/img/t4.jpg"
-      },
-      {
-        small: "assets/img/t5.jpg",
-        medium: "assets/img/t5.jpg",
-        big: "assets/img/t5.jpg"
-      }
-    ];
+  galleryImages3: GalleryImage[] = [
+    { 
+      small: 'assets/img/t6.jpg',
+      medium: 'assets/img/t6.jpg', 
+      big: 'assets/img/t6.jpg',
+      description: 'Transporte Especial' 
+    },
+    {
+      small: 'assets/img/t7.jpg',
+      medium: 'assets/img/t7.jpg', 
+      big: 'assets/img/t7.jpg',
+      description: 'Transporte Especial' 
+    },
+    {
+      small: 'assets/img/t8.jpg',
+      medium: 'assets/img/t8.jpg', 
+      big: 'assets/img/t8.jpg',
+      description: 'Transporte Especial' 
+    },
+    { 
+      small: 'assets/img/te-1.jpg',
+      medium: 'assets/img/te-1.jpg', 
+      big: 'assets/img/te-1.jpg',
+      description: 'Equipos Certificados' 
+    }
+  ];
 
-    this.galleryImages2 = [
-      {
-        small: "assets/img/t1.jpg",
-        medium: "assets/img/t1.jpg",
-        big: "assets/img/t1.jpg"
-      },
-      {
-        small: "assets/img/t2.jpg",
-        medium: "assets/img/t2.jpg",
-        big: "assets/img/t2.jpg"
-      }
-    ];
-    this.galleryImages3 = [
-      {
-        small: "assets/img/t6.jpg",
-        medium: "assets/img/t6.jpg",
-        big: "assets/img/t6.jpg"
-      },
-      {
-        small: "assets/img/t7.png",
-        medium: "assets/img/t7.png",
-        big: "assets/img/t7.png"
-      },
-      {
-        small: "assets/img/t8.jpg",
-        medium: "assets/img/t8.jpg",
-        big: "assets/img/t8.jpg"
-      }
-    ];
-    this.galleryImages4 = [
-      {
-        small: "assets/img/t9.jpg",
-        medium: "assets/img/t9.jpg",
-        big: "assets/img/t9.jpg"
-      },
-      {
-        small: "assets/img/t10.jpg",
-        medium: "assets/img/t10.jpg",
-        big: "assets/img/t10.jpg"
-      }
-    ];
-    this.galleryImages5 = [
-      {
-        small: "assets/img/t11.jpg",
-        medium: "assets/img/t11.jpg",
-        big: "assets/img/t11.jpg"
-      },
-      {
-        small: "assets/img/t12.jpg",
-        medium: "assets/img/t12.jpg",
-        big: "assets/img/t12.jpg"
-      },
-      {
-        small: "assets/img/t13.jpg",
-        medium: "assets/img/t13.jpg",
-        big: "assets/img/t13.jpg"
-      },
-      {
-        small: "assets/img/t14.jpg",
-        medium: "assets/img/t14.jpg",
-        big: "assets/img/t14.jpg"
-      }
-    ];
-    this.galleryImages6 = [
-      {
-        small: "assets/img/t9.jpg",
-        medium: "assets/img/t9.jpg",
-        big: "assets/img/t9.jpg"
-      },
-      {
-        small: "assets/img/t10.jpg",
-        medium: "assets/img/t10.jpg",
-        big: "assets/img/t10.jpg"
-      }
-    ];
-  }
+  galleryImages4: GalleryImage[] = [
+    { 
+      small: 'assets/img/t9.jpg',
+      medium: 'assets/img/t9.jpg', 
+      big: 'assets/img/t9.jpg',
+      description: 'Interior Mina' 
+    },
+    { 
+      small: 'assets/img/t10.jpg',
+      medium: 'assets/img/t10.jpg', 
+      big: 'assets/img/t10.jpg',
+      description: 'Interior Mina' 
+    },
+    { 
+      small: 'assets/img/tm-1.jpg',
+      medium: 'assets/img/tm-1.jpg', 
+      big: 'assets/img/tm-1.jpg',
+      description: 'Acceso Restringido' 
+    },
+    { 
+      small: 'assets/img/tm-2.jpg',
+      medium: 'assets/img/tm-2.jpg', 
+      big: 'assets/img/tm-2.jpg',
+      description: 'Equipos Compactos' 
+    }
+  ];
+
+  galleryImages5: GalleryImage[] = [
+    { 
+      small: 'assets/img/t11.jpg',
+      medium: 'assets/img/t11.jpg', 
+      big: 'assets/img/t11.jpg',
+      description: 'Carga Indivisible' 
+    },
+    { 
+      small: 'assets/img/t12.jpg',
+      medium: 'assets/img/t12.jpg', 
+      big: 'assets/img/t12.jpg',
+      description: 'Carga Indivisible' 
+    },
+    { 
+      small: 'assets/img/t13.jpg',
+      medium: 'assets/img/t13.jpg', 
+      big: 'assets/img/t13.jpg',
+      description: 'Carga Indivisible' 
+    },
+    { 
+      small: 'assets/img/t14.jpg',
+      medium: 'assets/img/t14.jpg', 
+      big: 'assets/img/t14.jpg',
+      description: 'Carga Indivisible' 
+    },
+    { 
+      small: 'assets/img/tci-1.jpg',
+      medium: 'assets/img/tci-1.jpg', 
+      big: 'assets/img/tci-1.jpg',
+      description: 'Camas Bajas' 
+    }
+  ];
+
+  galleryImages6: GalleryImage[] = [
+    { 
+      small: 'assets/img/tiz-1.jpg',
+      medium: 'assets/img/tiz-1.jpg', 
+      big: 'assets/img/tiz-1.jpg',
+      description: 'Carga y Descarga' 
+    },
+    { 
+      small: 'assets/img/tiz-2.jpg',
+      medium: 'assets/img/tiz-2.jpg', 
+      big: 'assets/img/tiz-2.jpg',
+      description: 'Carga y Descarga' 
+    },
+    { 
+      small: 'assets/img/tiz-3.jpg',
+      medium: 'assets/img/tiz-3.jpg', 
+      big: 'assets/img/tiz-3.jpg',
+      description: 'Carga y Descarga' 
+    },
+    { 
+      small: 'assets/img/tiz-4.jpg',
+      medium: 'assets/img/tiz-4.jpg', 
+      big: 'assets/img/tiz-4.jpg',
+      description: 'Carga y Descarga' 
+    },
+    { 
+      small: 'assets/img/tiz-5.jpeg',
+      medium: 'assets/img/tiz-5.jpeg', 
+      big: 'assets/img/tiz-5.jpeg',
+      description: 'Carga y Descarga' 
+    },
+    { 
+      small: 'assets/img/tiz-6.jpg',
+      medium: 'assets/img/tiz-6.jpg', 
+      big: 'assets/img/tiz-6.jpg',
+      description: 'Carga y Descarga' 
+    },
+  ];
+
+  constructor() { }
+
+  ngOnInit() { }
 }

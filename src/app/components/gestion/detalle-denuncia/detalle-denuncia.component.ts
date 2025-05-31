@@ -5,7 +5,9 @@ import { Denuncia } from '../../../models/denuncia';
 import { global } from '../../../services/global';
 import { ajax } from 'rxjs/ajax';
 import { pluck } from 'rxjs/operators';
-import _swal from 'sweetalert';
+import Swal from 'sweetalert2';
+
+const swal = Swal;
 
 @Component({
 	selector: 'app-detalle-denuncia',
@@ -38,34 +40,34 @@ export class DetalleDenunciaComponent implements OnInit {
 	}
 
 	obtenerDenuncia() {
-		this._route.params.subscribe((params) => {
-			let id = params['id'];
-			ajax
-				.getJSON(this.url + 'denuncia/' + id, this.authorization)
-				.pipe(pluck<any, Denuncia>('denuncias'))
-				.subscribe((resp) => (this.denuncia = resp));
-		});
+		let id = this._route.snapshot.paramMap.get('id');
+		ajax
+			.get(this.url + `denuncia/${id}`, this.authorization)
+			.pipe(pluck('denuncias'))
+			.subscribe((resp: any) => (this.denuncia = resp));
 	}
 
 	finalizarTicket() {
-		_swal({
+		swal.fire({
 			title: '¿Seguro quieres cerrar el ticket?',
 			text: '¡El ticket no podrá ser abierto nuevamente!',
 			icon: 'warning',
-			buttons: [ 'Cancelar', 'Continuar' ]
-		}).then((willDelete) => {
-			if (willDelete) {
+			showCancelButton: true,
+			confirmButtonText: 'Continuar',
+			cancelButtonText: 'Cancelar'
+		}).then((result) => {
+			if (result.isConfirmed) {
 				this.denuncia.finalizada = true;
 				let json = JSON.stringify(this.denuncia);
 				let params = 'json=' + json;
 				ajax.put(this.url + 'denuncia/' + this.denuncia.id, params, this.authorization).subscribe({
-					next: (resp) => _swal('!Buen trabajo!', 'El ticket se ha cerrado correctamente', 'success'),
+					next: (resp) => swal.fire('!Buen trabajo!', 'El ticket se ha cerrado correctamente', 'success'),
 					error: (err) =>
-						_swal('Ocurrio un problema', 'El ticket no pudo ser cerrado, intenta mas tarde', 'warning'),
+						swal.fire('Ocurrio un problema', 'El ticket no pudo ser cerrado, intenta mas tarde', 'warning'),
 					complete: () => console.log('Completado')
 				});
 			} else {
-				_swal('El ticket sigue abierto', '', 'info');
+				swal.fire('El ticket sigue abierto', '', 'info');
 			}
 		});
 	}

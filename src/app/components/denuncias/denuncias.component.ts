@@ -3,9 +3,12 @@ import { global } from "../../services/global";
 import { ajax } from "rxjs/ajax";
 import { Denuncia } from "../../models/denuncia";
 import { UserService } from "../../services/user.service";
-import _swal from "sweetalert";
+import Swal from 'sweetalert2';
 import { Router } from "@angular/router";
-declare var require: any;
+import { v1 as uuidv1 } from 'uuid';
+
+const swal = Swal;
+
 @Component({
   selector: "app-denuncias",
   templateUrl: "./denuncias.component.html",
@@ -70,8 +73,8 @@ export class DenunciasComponent implements OnInit {
   }
 
   crearDenuncia(form) {
-    const uuidv1 = require("uuid/v1");
-    this.denuncia.ticket = uuidv1();
+    const id = uuidv1();
+    this.denuncia.ticket = id;
     this.denuncia.motivo = this.opcionSeleccionada;
 
     switch (this.opcionSeleccionada) {
@@ -116,7 +119,7 @@ export class DenunciasComponent implements OnInit {
     console.log(params);
     ajax.post(this.url + "denuncia", params).subscribe({
       next: resp => {
-        _swal(
+        swal.fire(
           "¡Buen Trabajo!",
           "Tu ticket fue creado exitosamente, pronto te contactaremos.",
           "success"
@@ -126,7 +129,7 @@ export class DenunciasComponent implements OnInit {
         }, 2000);
       },
       error: err => {
-        _swal(
+        swal.fire(
           "Error",
           "El ticket no pudo ser creado. ¡Intenta de nuevo!",
           "error"
@@ -138,9 +141,13 @@ export class DenunciasComponent implements OnInit {
 
   enviarCorreos() {}
 
-  antecedenteUpload(data) {
-    const archivo_data = JSON.parse(data.response);
-    console.log(archivo_data);
-    this.denuncia.antecedentes = archivo_data.file;
+  antecedenteUpload(files: File[]) {
+    console.log('Archivos de antecedentes recibidos:', files);
+    if (files && files.length > 0) {
+      files.forEach(file => {
+        console.log('Archivo:', file.name);
+        // Aquí puedes implementar la lógica de subida de antecedentes
+      });
+    }
   }
 }

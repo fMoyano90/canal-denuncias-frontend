@@ -3,11 +3,7 @@
     <div class="col-12 text-center mt-3" id="transporte">
       <h2>TRANSPORTE</h2>
       <p>
-        Nuestra empresa ofrece servicios de
-        <b>transporte de carga terrestre nacional</b> de diversa índole, los que
-        van desde reparto de productos hasta transporte de sustancias
-        peligrosas. También se ofrece la realización de tareas de carga,
-        descarga e izaje, prestando así un servicio completo.
+        Nuestra empresa ofrece servicios de <b>transporte de carga terrestre nacional</b> de diversa índole, los que van desde reparto de productos, transporte de sustancias peligrosas, hasta cargas con <b>sobre peso y sobre dimensión</b>. También se ofrece la realización de tareas de carga, descarga e izaje, prestando así un servicio completo.
       </p>
     </div>
     <div class="col-12">
@@ -93,7 +89,7 @@
           role="tabpanel"
           aria-labelledby="carga-general-tab"
         >
-          <div class="row container">
+          <div class="row">
             <div class="col-6 pt-3">
               <p>
                 Realizamos transporte de carga general a lo largo de Chile, para
@@ -116,11 +112,10 @@
               </ul>
             </div>
             <div class="col-6">
-              <ngx-gallery
-                [options]="galleryOptions"
+              <app-image-gallery 
                 [images]="galleryImages"
-                class="mt-3"
-              ></ngx-gallery>
+                [showThumbnails]="false">
+              </app-image-gallery>
             </div>
           </div>
         </div>
@@ -132,7 +127,7 @@
           role="tabpanel"
           aria-labelledby="granel-tab"
         >
-          <div class="row container">
+          <div class="row">
             <div class="col-6 pt-3">
               <p>
                 Efectuamos transporte terrestre de diversos tipos de carga que
@@ -153,11 +148,10 @@
               </ul>
             </div>
             <div class="col-6">
-              <ngx-gallery
-                [options]="galleryOptions"
+              <app-image-gallery 
                 [images]="galleryImages2"
-                class="mt-3"
-              ></ngx-gallery>
+                [showThumbnails]="false">
+              </app-image-gallery>
             </div>
           </div>
         </div>
@@ -169,7 +163,7 @@
           role="tabpanel"
           aria-labelledby="especiales-tab"
         >
-          <div class="row container">
+          <div class="row">
             <div class="col-6 pt-3">
               <p>
                 Ofrecemos transporte de cargas de configuración no habitual y
@@ -197,11 +191,10 @@
               </ul>
             </div>
             <div class="col-6">
-              <ngx-gallery
-                [options]="galleryOptions"
+              <app-image-gallery 
                 [images]="galleryImages3"
-                class="mt-3"
-              ></ngx-gallery>
+                [showThumbnails]="false">
+              </app-image-gallery>
             </div>
           </div>
         </div>
@@ -213,7 +206,7 @@
           role="tabpanel"
           aria-labelledby="interior-mina-tab"
         >
-          <div class="row container">
+          <div class="row">
             <div class="col-6 pt-3">
               <p>
                 Este servicio es uno de los mayores orgullos operativos de la
@@ -237,11 +230,10 @@
               </ul>
             </div>
             <div class="col-6">
-              <ngx-gallery
-                [options]="galleryOptions"
+              <app-image-gallery 
                 [images]="galleryImages4"
-                class="mt-3"
-              ></ngx-gallery>
+                [showThumbnails]="false">
+              </app-image-gallery>
             </div>
           </div>
         </div>
@@ -253,7 +245,7 @@
           role="tabpanel"
           aria-labelledby="carga-indivisible-tab"
         >
-          <div class="row container">
+          <div class="row">
             <div class="col-6 pt-3">
               <p>
                 La empresa cuenta con vasta experiencia en el transporte de
@@ -282,11 +274,10 @@
               </ul>
             </div>
             <div class="col-6">
-              <ngx-gallery
-                [options]="galleryOptions"
+              <app-image-gallery 
                 [images]="galleryImages5"
-                class="mt-3"
-              ></ngx-gallery>
+                [showThumbnails]="false">
+              </app-image-gallery>
             </div>
           </div>
         </div>
@@ -298,32 +289,38 @@
           role="tabpanel"
           aria-labelledby="contact-tab"
         >
-          <div class="row container">
+          <div class="row">
             <div class="col-6 pt-3">
               <p>
-                Efectuamos transporte terrestre de diversos tipos de carga que
-                no poseen envase o empaquetamiento (a granel). Este servicio
-                abarca desde el transporte en larga distancia de insumos como
-                bolas de molienda, sal, escombros y material fino o
-                estabilizado, hasta la inclusión de los equipos dentro de faenas
-                para realizar movimiento de tierra.
-              </p>
-              <p>
-                Para estas labores se cuenta con los siguientes tipos de equipos
+                Ofrecemos equipos de variado uso para la manipulación de las cargas en tareas de carga, descarga y montaje:
               </p>
               <ul>
-                <li>Camiones tolva para 15 y 20 toneladas.</li>
+                <li>Transporte con autonomía de carga y descarga.</li>
                 <li>
-                  Camiones articulados, equipados con bateas para 25 toneladas.
+                  Operación de bodegas y manipulación de carga al interior de las mismas.
+                </li>
+                <li>
+                  Trabajos en faenas de montaje industrial.
+                </li>
+              </ul>
+              <p>
+                Los tipos de equipos con que cuenta la empresa para realizar estos trabajos son:
+              </p>
+              <ul>
+                <li>Camiones pluma, con capacidad de levante de entre 3.000 y 10.000 kilos.</li>
+                <li>
+                  Grúas horquillas con capacidad de levante de entre 3.000 y 16.000 kilos.
+                </li>
+                <li>
+                  Apiladores eléctricos con capacidad de entre 800 y 2.000 kilos.
                 </li>
               </ul>
             </div>
             <div class="col-6">
-              <ngx-gallery
-                [options]="galleryOptions"
+              <app-image-gallery 
                 [images]="galleryImages6"
-                class="mt-3"
-              ></ngx-gallery>
+                [showThumbnails]="false">
+              </app-image-gallery>
             </div>
           </div>
         </div>
@@ -334,14 +331,15 @@
 </div>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12" id="ctaTransporte">
-      <h3 class="float-left">
-        ¿Buscas servicios de transporte? Más de 50 años de experiencia nos
-        avalán
-      </h3>
-      <a routerLink="/contacto" class="btn btn-primary float-right">
-        <b>¡COTIZA CON NOSOTROS! <i class="fas fa-chevron-right"></i></b>
-      </a>
+    <div class="col-12 mb-5 mt-5" id="ctaTransporte" style="background-color: #01417F; color: white; padding: 20px;">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="mb-0" style="color: white;">
+          ¿Buscas servicios de transporte? Más de 50 años de experiencia nos avalan
+        </h3>
+        <a routerLink="/contacto" class="btn btn-light btn-lg" style="color: #01417F; font-weight: bold;">
+          ¡COTIZA CON NOSOTROS! <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
     </div>
   </div>
 </div>

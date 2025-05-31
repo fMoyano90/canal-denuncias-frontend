@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <form class="form-row mb-4" #contactoNuevo="ngForm" (ngSubmit)="crearContacto(contactoNuevo.value)">
+  <form class="form-row mb-5" #contactoNuevo="ngForm" (ngSubmit)="crearContacto(contactoNuevo.value)">
     <div class="col-4">
       <h4 class="pb-0 mb-0">1. Datos de contacto</h4>
       <p><small>* Campos requeridos</small></p>
@@ -66,8 +66,11 @@
         <label>Pretensiones de renta</label>
         <input type="text" class="form-control" name="pretension_renta" #pretension_renta="ngModel" [(ngModel)]="contacto.pretension_renta"/>
         <label>Curriculum</label>
-        <angular-file-uploader [config]="afuConfig" [resetUpload]="resetVar" (ApiResponse)="curriculumUpload($event)">
-        </angular-file-uploader>
+        <app-file-upload 
+          accept=".pdf,.doc,.docx" 
+          [multiple]="false"
+          (filesDropped)="curriculumUpload($event)">
+        </app-file-upload>
       </div>
 
       <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'Proveedor'">

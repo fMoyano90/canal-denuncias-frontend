@@ -23,13 +23,11 @@ export class NoticiaComponent implements OnInit {
 	}
 
 	obtenerNoticia() {
-		this._route.params.subscribe((params) => {
-			let id = params['id'];
-			ajax.getJSON(`${this.url}noticia/${id}`).pipe(pluck<any, Noticia>('noticias')).subscribe({
-				next: (resp) => (this.noticia = resp),
-				error: (err) => console.log(err),
-				complete: () => console.log('Operación completada')
-			});
+		let id = this._route.snapshot.paramMap.get('id');
+		ajax.getJSON(`${this.url}noticia/${id}`).pipe(pluck('noticias')).subscribe({
+			next: (resp: any) => (this.noticia = resp),
+			error: (err) => console.log(err),
+			complete: () => console.log('Obteniendo noticia...')
 		});
 	}
 }

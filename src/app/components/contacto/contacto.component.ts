@@ -3,8 +3,10 @@ import { global } from '../../services/global';
 import { ajax } from 'rxjs/ajax';
 import { Contacto } from '../../models/contacto';
 import { UserService } from '../../services/user.service';
-import _swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+
+const swal = Swal;
 
 @Component({
 	selector: 'app-contacto',
@@ -68,22 +70,26 @@ export class ContactoComponent implements OnInit {
 		console.log(params);
 		ajax.post(this.url + 'contacto', params).subscribe({
 			next: (resp) => {
-				_swal('¡Buen Trabajo!', 'Hemos recibido tu mensaje, pronto te contactaremos.', 'success');
+				swal.fire('¡Buen Trabajo!', 'Hemos recibido tu mensaje, pronto te contactaremos.', 'success');
 				console.log(resp);
 				setTimeout(() => {
 					this._router.navigate([ '/inicio' ]);
 				}, 2000);
 			},
 			error: (err) => {
-				_swal('Error', 'Hubo un error ¡Intenta de nuevo!', 'error');
+				swal.fire('Error', 'Hubo un error ¡Intenta de nuevo!', 'error');
 			},
 			complete: () => console.log('Completado')
 		});
 	}
 
-	curriculumUpload(data) {
-		const archivo_data = JSON.parse(data.response);
-		console.log(archivo_data);
-		this.contacto.curriculum = archivo_data.file;
+	curriculumUpload(files: File[]) {
+		console.log('Archivos recibidos:', files);
+		if (files && files.length > 0) {
+			const file = files[0];
+			console.log('Archivo seleccionado:', file.name);
+			// Aquí puedes implementar la lógica de subida del curriculum
+			// this.contacto.curriculum = file;
+		}
 	}
 }

@@ -3,9 +3,12 @@ import { ajax } from 'rxjs/ajax';
 import { global } from '../../services/global';
 import { Noticia } from '../../models/noticia';
 import { pluck } from 'rxjs/operators';
-import _swal from 'sweetalert';
+import { NoticiaService } from '../../services/noticia.service';
+import Swal from 'sweetalert2';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+
+const swal = Swal;
 
 @Component({
 	selector: 'app-noticias',
@@ -69,41 +72,41 @@ export class NoticiasComponent implements OnInit {
 
 	obtenerNoticias() {
 		ajax
-			.getJSON(this.url + 'noticia')
-			.pipe(pluck<any, Noticia[]>('noticias'))
-			.subscribe((resp) => ((this.noticias = resp), console.log(resp)));
+			.getJSON(this.url + 'noticias')
+			.pipe(pluck('noticias'))
+			.subscribe((resp: any) => ((this.noticias = resp), console.log(resp)));
 	}
 
 	obtenerPrincipal() {
 		ajax
-			.getJSON(this.url + 'noticia/principal/ultima')
-			.pipe(pluck<any, Noticia>('noticia'))
-			.subscribe((resp) => ((this.principal = resp), console.log(resp)));
+			.getJSON(this.url + 'noticia-principal')
+			.pipe(pluck('noticia'))
+			.subscribe((resp: any) => ((this.principal = resp), console.log(resp)));
 	}
 
 	eliminarNoticia(id) {
-		_swal({
+		swal.fire({
 			title: '¿Seguro quieres eliminar esta noticia de tus registros?',
 			text: '¡La información no podra recuperarse!',
 			icon: 'warning',
-			buttons: [ 'Cancelar', 'Continuar' ]
-		}).then((willDelete) => {
-			if (willDelete) {
+			showCancelButton: true,
+			confirmButtonText: 'Continuar',
+			cancelButtonText: 'Cancelar'
+		}).then((result) => {
+			if (result.isConfirmed) {
 				ajax.delete(`${this.url}noticia/${id}`, this.authorization).subscribe({
 					next: (resp) => {
 						this.obtenerNoticias();
-						_swal('¡La noticia se elimino correctamente!', {
-							icon: 'success'
-						});
+						swal.fire('¡La noticia se elimino correctamente!', '', 'success');
 					},
 					error: (err) => {
-						_swal('Hubo un problema', 'La noticia no pudo ser eliminada', 'error');
+						swal.fire('Hubo un problema', 'La noticia no pudo ser eliminada', 'error');
 						console.warn(err);
 					},
 					complete: () => console.log('Operación completada')
 				});
 			} else {
-				_swal('La noticia esta a salvo');
+				swal.fire('La noticia esta a salvo', '', 'info');
 			}
 		});
 	}

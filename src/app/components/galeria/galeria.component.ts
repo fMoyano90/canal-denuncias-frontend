@@ -1,157 +1,55 @@
-import { Component, OnInit } from "@angular/core";
-import {
-  NgxGalleryOptions,
-  NgxGalleryImage,
-  NgxGalleryAnimation
-} from "ngx-gallery";
+import { Component, OnInit } from '@angular/core';
+import { GalleryImage } from '../shared/image-gallery/image-gallery.component';
 
 @Component({
-  selector: "app-galeria",
-  templateUrl: "./galeria.component.html",
-  styleUrls: ["./galeria.component.scss"]
+  selector: 'app-galeria',
+  templateUrl: './galeria.component.html',
+  styleUrls: ['./galeria.component.css']
 })
 export class GaleriaComponent implements OnInit {
-  galleryOptions: NgxGalleryOptions[];
-  galleryImages: NgxGalleryImage[];
 
-  constructor() {}
+  // Imágenes de Transporte
+  transporteImages: GalleryImage[] = [];
+
+  // Imágenes de Operación de Bodega
+  bodegaImages: GalleryImage[] = [];
+
+  // Array mantenido para compatibilidad (si se usa en otro lugar)
+  galleryImages: GalleryImage[] = [
+    ...this.transporteImages,
+    ...this.bodegaImages
+  ];
+
+  constructor() { 
+    // Generar imágenes de transporte dinámicamente
+    this.generateTransporteImages();
+    // Generar imágenes de bodega dinámicamente
+    this.generateBodegaImages();
+  }
 
   ngOnInit(): void {
-    this.galleryOptions = [
-      {
-        width: "600px",
-        height: "500px",
-        imageDescription: false,
-        previewDescription: true,
-        thumbnailsColumns: 3,
-        thumbnailsRows: 1,
-        thumbnailsPercent: 25,
-        thumbnailsMargin: 2,
-        thumbnailMargin: 2,
-        thumbnailsOrder: 2,
-        imageAnimation: NgxGalleryAnimation.Zoom
-      },
-      // max-width 800
-      {
-        breakpoint: 800,
-        width: "100%",
-        height: "600px",
-        imagePercent: 80,
-        thumbnailsPercent: 20,
-        thumbnailsMargin: 20,
-        thumbnailMargin: 20
-      },
-      // max-width 400
-      {
-        breakpoint: 400,
-        preview: false
-      }
-    ];
+  }
 
-    this.galleryImages = [
-      {
-        small: "assets/img/s1.png",
-        medium: "assets/img/s1.png",
-        big: "assets/img/s1.png",
-        description: "Sobredimensión y peso"
-      },
-      {
-        small: "assets/img/s2.png",
-        medium: "assets/img/s2.png",
-        big: "assets/img/s2.png",
-        description: "Sobredimensión y peso"
-      },
-      {
-        small: "assets/img/s3.png",
-        medium: "assets/img/s3.png",
-        big: "assets/img/s3.png",
-        description: "Sobredimensión y peso"
-      },
-      {
-        small: "assets/img/s1.png",
-        medium: "assets/img/s1.png",
-        big: "assets/img/s1.png",
-        description: "Sobredimensión y peso"
-      },
-      {
-        small: "assets/img/s2.png",
-        medium: "assets/img/s2.png",
-        big: "assets/img/s2.png",
-        description: "Sobredimensión y peso"
-      },
-      {
-        small: "assets/img/s3.png",
-        medium: "assets/img/s3.png",
-        big: "assets/img/s3.png",
-        description: "Sobredimensión y peso"
-      },
-      {
-        small: "assets/img/s1.png",
-        medium: "assets/img/s1.png",
-        big: "assets/img/s1.png",
-        description: "Sobredimensión y peso"
-      },
-      {
-        small: "assets/img/s2.png",
-        medium: "assets/img/s2.png",
-        big: "assets/img/s2.png"
-      },
-      {
-        small: "assets/img/s3.png",
-        medium: "assets/img/s3.png",
-        big: "assets/img/s3.png",
-        description: "Sobredimensión y peso"
-      },
-      {
-        small: "assets/img/s1.png",
-        medium: "assets/img/s1.png",
-        big: "assets/img/s1.png",
-        description: "Sobredimensión y peso"
-      },
-      {
-        small: "assets/img/s2.png",
-        medium: "assets/img/s2.png",
-        big: "assets/img/s2.png",
-        description: "Sobredimensión y peso"
-      },
-      {
-        small: "assets/img/s3.png",
-        medium: "assets/img/s3.png",
-        big: "assets/img/s3.png",
-        description: "Sobredimensión y peso"
-      },
-      {
-        small: "assets/img/s1.png",
-        medium: "assets/img/s1.png",
-        big: "assets/img/s1.png",
-        description: "Sobredimensión y peso"
-      },
-      {
-        small: "assets/img/s2.png",
-        medium: "assets/img/s2.png",
-        big: "assets/img/s2.png",
-        description: "Sobredimensión y peso"
-      },
-      {
-        small: "assets/img/s3.png",
-        medium: "assets/img/s3.png",
-        big: "assets/img/s3.png"
-      },
-      {
-        small: "assets/img/s1.png",
-        medium: "assets/img/s1.png",
-        big: "assets/img/s1.png"
-      },
-      {
-        small: "assets/img/s2.png",
-        medium: "assets/img/s2.png",
-        big: "assets/img/s2.png"
-      },
-      {
-        small: "assets/img/s3.png",
-        medium: "assets/img/s3.png",
-        big: "assets/img/s3.png"
-      }
-    ];
+  private generateTransporteImages() {
+    for (let i = 1; i <= 47; i++) {
+      const imageNumber = i.toString().padStart(2, '0'); // Para tener gt01, gt02, etc.
+      this.transporteImages.push({
+        small: `assets/img/gt${i}.jpg`,
+        medium: `assets/img/gt${i}.jpg`,
+        big: `assets/img/gt${i}.jpg`,
+        description: `Transporte - Imagen ${i}`
+      });
+    }
+  }
+
+  private generateBodegaImages() {
+    for (let i = 1; i <= 16; i++) {
+      this.bodegaImages.push({
+        small: `assets/img/gb${i}.jpg`,
+        medium: `assets/img/gb${i}.jpg`,
+        big: `assets/img/gb${i}.jpg`,
+        description: `Operación de Bodega - Imagen ${i}`
+      });
+    }
   }
 }
