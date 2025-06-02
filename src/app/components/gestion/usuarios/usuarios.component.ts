@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ajax } from 'rxjs/ajax';
 import { User } from '../../../models/user';
 import { UserService } from '../../../services/user.service';
-import _swal from 'sweetalert';
+import Swal from 'sweetalert2';
+
+const swal = Swal;
 
 @Component({
 	selector: 'app-usuarios',
@@ -54,7 +56,7 @@ export class UsuariosComponent implements OnInit {
 			})
 			.subscribe({
 				next: (resp) => {
-					_swal('Exito', 'El rol de usuario fue cambiado exitosamente', 'success');
+					swal.fire('Exito', 'El rol de usuario fue cambiado exitosamente', 'success');
 				},
 				error: (err) => console.warn(err),
 				complete: () => console.log('Completado')
@@ -62,13 +64,15 @@ export class UsuariosComponent implements OnInit {
 	}
 
 	usuarioDelete(id) {
-		_swal({
+		swal.fire({
 			title: '¿Seguro quieres eliminar este usuario de los registros?',
 			text: '¡La información del usuario no podra recuperarse!',
 			icon: 'warning',
-			buttons: [ 'Cancelar', 'Continuar' ]
-		}).then((willDelete) => {
-			if (willDelete) {
+			showCancelButton: true,
+			confirmButtonText: 'Continuar',
+			cancelButtonText: 'Cancelar'
+		}).then((result) => {
+			if (result.isConfirmed) {
 				ajax
 					.delete(`${this.url}/${id}`, {
 						'Content-Type': 'application/x-www-form-urlencoded',
@@ -77,18 +81,16 @@ export class UsuariosComponent implements OnInit {
 					.subscribe({
 						next: (resp) => {
 							this.obtenerUsuarios();
-							_swal('¡El usuario se elimino correctamente!', {
-								icon: 'success'
-							});
+							swal.fire('¡El usuario se elimino correctamente!', '', 'success');
 						},
 						error: (err) => {
-							_swal('Hubo un problema', 'El usuario no pudo ser eliminado', 'error');
+							swal.fire('Hubo un problema', 'El usuario no pudo ser eliminado', 'error');
 							console.warn(err);
 						},
 						complete: () => console.log('Operación completada')
 					});
 			} else {
-				_swal('El usuario esta a salvo');
+				swal.fire('El usuario esta a salvo', '', 'info');
 			}
 		});
 	}

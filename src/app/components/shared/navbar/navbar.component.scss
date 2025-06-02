@@ -5,9 +5,19 @@
   color: #fff;
 }
 
+/* Forzar z-index bajo para el navbar */
+nav.navbar {
+  z-index: 1030 !important;
+}
+
+.sticky-top {
+  z-index: 1030 !important;
+}
+
 #preheader {
   height: 30px;
   font-size: 14px;
+  z-index: 1020 !important;
   ul {
     margin-top: 3px;
     li {

@@ -1,0 +1,65 @@
+<div class="image-gallery">
+  <!-- Carrusel principal -->
+  <div class="carousel-container" *ngIf="images.length > 0">
+    <div class="main-image-container">
+      <button 
+        class="carousel-nav prev-btn" 
+        (click)="prevMainImage($event)" 
+        [disabled]="currentIndex === 0"
+        *ngIf="images.length > 1"
+      >
+        &#8249;
+      </button>
+      
+      <img 
+        [src]="images[currentIndex].medium" 
+        [alt]="images[currentIndex].description" 
+        class="main-image"
+        (click)="openModal(currentIndex)"
+      />
+      
+      <button 
+        class="carousel-nav next-btn" 
+        (click)="nextMainImage($event)" 
+        [disabled]="currentIndex === images.length - 1"
+        *ngIf="images.length > 1"
+      >
+        &#8250;
+      </button>
+    </div>
+    
+    <!-- Miniaturas -->
+    <div class="thumbnails-row" *ngIf="images.length > 1 && showThumbnails">
+      <div class="thumbnail-container">
+        <button 
+          class="thumbnail-nav prev-thumb" 
+          (click)="prevThumbnails()" 
+          [disabled]="displayStartIndex === 0"
+          *ngIf="images.length > visibleThumbnails"
+        >
+          &#8249;
+        </button>
+        
+        <div class="thumbnails-wrapper">
+          <img 
+            *ngFor="let image of getVisibleThumbnails(); let i = index"
+            [src]="image.small"
+            [alt]="image.description"
+            class="thumbnail"
+            [class.active]="displayStartIndex + i === currentIndex"
+            (click)="selectImage(displayStartIndex + i)"
+          />
+        </div>
+        
+        <button 
+          class="thumbnail-nav next-thumb" 
+          (click)="nextThumbnails()" 
+          [disabled]="displayStartIndex + visibleThumbnails >= images.length"
+          *ngIf="images.length > visibleThumbnails"
+        >
+          &#8250;
+        </button>
+      </div>
+    </div>
+  </div>
+</div> 

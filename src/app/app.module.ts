@@ -35,18 +35,14 @@ import { GestionContenidoComponent } from './components/gestion/gestion-contenid
 import { LoginComponent } from './components/gestion/login/login.component';
 import { TrabajoComponent } from './components/trabajo/trabajo.component';
 
-// Galerias de imagenes
-import { NgxGalleryModule } from 'ngx-gallery';
+// Nueva galería de imágenes
+import { ImageGalleryComponent } from './components/shared/image-gallery/image-gallery.component';
 
 // Editor de texto enriquecido
 import { EditorModule } from '@tinymce/tinymce-angular';
 
-// Subir archivos
-import { AngularFileUploaderModule } from 'angular-file-uploader';
-
-/* Custom Hammer configuration */
-import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import * as Hammer from 'hammerjs';
+// Subir archivos nativo
+import { FileUploadComponent } from './components/shared/file-upload/file-upload.component';
 
 // Paginación
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -65,15 +61,6 @@ import { HistorialDenunciasComponent } from './components/gestion/historial-denu
 import { DenunciasPendientesComponent } from './components/gestion/denuncias-pendientes/denuncias-pendientes.component';
 import { CategoriaDenunciaComponent } from './components/gestion/categoria-denuncia/categoria-denuncia.component';
 import { DetalleDenunciaComponent } from './components/gestion/detalle-denuncia/detalle-denuncia.component';
-
-export class CustomHammerConfig extends HammerGestureConfig {
-	overrides = {
-		pan: {
-			direction: Hammer.DIRECTION_ALL
-		}
-	};
-}
-/* End Custom hammer configuration */
 
 @NgModule({
 	declarations: [
@@ -106,21 +93,20 @@ export class CustomHammerConfig extends HammerGestureConfig {
 		HistorialDenunciasComponent,
 		DenunciasPendientesComponent,
 		CategoriaDenunciaComponent,
-		DetalleDenunciaComponent
+		DetalleDenunciaComponent,
+		ImageGalleryComponent,
+		FileUploadComponent
 	],
 	imports: [
 		BrowserModule,
 		APP_ROUTING,
 		FormsModule,
 		HttpClientModule,
-		NgxGalleryModule,
 		EditorModule,
-		AngularFileUploaderModule,
 		NgxPaginationModule
 	],
 	providers: [
-		{ provide: LOCALE_ID, useValue: 'es-Cl' },
-		{ provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
+		{ provide: LOCALE_ID, useValue: 'es-Cl' }
 	],
 	bootstrap: [ AppComponent ]
 })

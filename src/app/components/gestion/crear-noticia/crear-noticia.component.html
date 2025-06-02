@@ -55,12 +55,11 @@
         </div>
         <div class="form-group">
           <label for="imagen">Imagen</label>
-          <angular-file-uploader
-            [config]="afuConfig"
-            [resetUpload]="resetVar"
-            (ApiResponse)="imageUpload($event)"
-          >
-          </angular-file-uploader>
+          <app-file-upload 
+            accept=".jpg,.jpeg,.png,.gif" 
+            [multiple]="false"
+            (filesDropped)="imageUpload($event)">
+          </app-file-upload>
         </div>
         <div class="form-group">
           <label for="principal">¿Noticia principal?</label>

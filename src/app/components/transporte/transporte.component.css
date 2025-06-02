@@ -1,0 +1,41 @@
+/* Estilos para el componente transporte */
+.container {
+  margin-top: 20px;
+}
+
+#transporte h2 {
+  color: #333;
+  font-weight: bold;
+}
+
+.nav-tabs .nav-link {
+  color: #495057;
+}
+
+.nav-tabs .nav-link.active {
+  color: #007bff;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.tab-content {
+  padding: 20px;
+  border: 1px solid #dee2e6;
+  border-top: none;
+}
+
+#ctaTransporte {
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+#ctaTransporte h3 {
+  margin: 0;
+  line-height: 1.5;
+}
+
+#ctaTransporte .btn {
+  margin-top: 10px;
+} 

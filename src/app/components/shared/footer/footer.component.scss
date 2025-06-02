@@ -3,7 +3,16 @@
 #footer {
   border-top: 15px double white;
   background-color: $color3;
+  z-index: 1010 !important;
+  position: relative;
 }
+
+/* Forzar z-index bajo para cualquier elemento del footer */
+#footer,
+#footer * {
+  z-index: 1010 !important;
+}
+
 #nosotros {
   ul {
     list-style: none;
@@ -30,7 +39,7 @@
     text-decoration: none;
   }
 }
-.twitter {
+.linkedin {
   a {
     transition: color 0.5s;
     color: white;
@@ -47,9 +56,9 @@
     color: #3b5998;
   }
 }
-.twitter:hover {
+.linkedin:hover {
   a {
-    color: #35dbf1;
+    color: #0077b5;
   }
 }
 

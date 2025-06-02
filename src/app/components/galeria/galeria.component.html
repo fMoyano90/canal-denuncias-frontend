@@ -1,15 +1,23 @@
 <div class="container animated fadeIn">
   <div class="row">
-    <div class="col-7 mb-4">
-      <ngx-gallery
-        [options]="galleryOptions"
-        [images]="galleryImages"
-        class="mt-3"
-      ></ngx-gallery>
+    <div class="col-12 mt-3 mb-4">
+      <h1>Galería de imágenes</h1>
+      <p>Haz clic sobre las imágenes para ver en pantalla completa.</p>
+      <hr />
     </div>
-    <div class="col-5 text-center mt-5">
-      <h1>Galería de imagenes</h1>
-      <p>Haz clic sobre las imagenes para ver en pantalla completa.</p>
+  </div>
+  
+  <div class="row">
+    <!-- Sección Transporte -->
+    <div class="col-6">
+      <h2 class="mb-4">Transporte</h2>
+      <app-image-gallery [images]="transporteImages"></app-image-gallery>
+    </div>
+    
+    <!-- Sección Operación de Bodega -->
+    <div class="col-6 mb-5">
+      <h2 class="mb-4">Operación de Bodega</h2>
+      <app-image-gallery [images]="bodegaImages"></app-image-gallery>
     </div>
   </div>
 </div>

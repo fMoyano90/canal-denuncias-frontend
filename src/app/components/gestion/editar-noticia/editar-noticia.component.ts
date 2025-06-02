@@ -3,10 +3,9 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { Noticia } from '../../../models/noticia';
 import { NoticiaService } from '../../../services/noticia.service';
-import _swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import { global } from '../../../services/global';
 import { ajax } from 'rxjs/ajax';
-import { stringify } from 'querystring';
 import { pluck } from 'rxjs/operators';
 
 @Component({
@@ -108,7 +107,7 @@ export class EditarNoticiaComponent implements OnInit {
 			let id = params['id'];
 			ajax.put(`${this.url}noticia/${id}`, jsonParams, this.authorization).subscribe({
 				next: (resp) => {
-					_swal('Exito', '¡La noticia fue actualizada!', 'success');
+					Swal.fire('Éxito', '¡La noticia fue actualizada!', 'success');
 					setTimeout(() => {
 						this._router.navigate([ '/noticias' ]);
 					}, 2000);

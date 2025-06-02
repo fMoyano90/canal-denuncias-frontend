@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Override EXTREMO para asegurar que el modal de la galería esté por encima de todo */
+.image-gallery .modal {
+  z-index: 2147483647 !important; /* Máximo z-index posible */
+  position: fixed !important;
+}
+
+/* Override específico para Bootstrap */
+.image-gallery .modal,
+.image-gallery .modal *,
+.image-gallery .modal .modal-content,
+.image-gallery .modal .modal-content * {
+  z-index: 2147483647 !important;
+}
+
+/* Asegurar que no haya scroll cuando el modal esté abierto */
+body.modal-open {
+  overflow: hidden !important;
+}
+
+/* Forzar z-index BAJO para navbar sticky de Bootstrap */
+.navbar,
+.navbar-nav,
+.sticky-top,
+nav.navbar,
+.navbar * {
+  z-index: 1030 !important;
+}
+
+/* Forzar z-index BAJO para footer */
+#footer,
+#footer *,
+.footer,
+.footer * {
+  z-index: 1020 !important;
+}
+
+/* Forzar z-index BAJO para cualquier container-fluid */
+.container-fluid {
+  z-index: 1010 !important;
+}
+
+/* Override para cualquier elemento que pueda interferir */
+body > *:not(.image-gallery) {
+  z-index: 1040 !important;
+}
+
+/* Asegurar que el modal tenga el z-index más alto posible */
+.image-gallery .modal {
+  z-index: 2147483647 !important;
+  background: rgba(0, 0, 0, 0.95) !important;
+} 
