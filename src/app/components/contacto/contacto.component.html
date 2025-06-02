@@ -19,11 +19,11 @@
       <p><small>* Campos requeridos</small></p>
 
       <label for="nombre">Nombre*</label>
-      <input type="text" name="nombre" class="form-control" #nombre="ngModel" [(ngModel)]="contacto.nombre" required />
+      <input type="text" name="nombre" class="form-control" #nombre="ngModel" [(ngModel)]="contactForm.name" required />
       <label for="email">Email*</label>
-      <input type="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="contacto.email" required />
+      <input type="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="contactForm.email" required />
       <label for="telefono">Telefono*</label>
-      <input type="tel" name="telefono" class="form-control" #telefono="ngModel" [(ngModel)]="contacto.telefono" required />
+      <input type="tel" name="telefono" class="form-control" #telefono="ngModel" [(ngModel)]="contactForm.phone" required />
 
       <h4 class="mt-2">2. Motivo de contacto</h4>
 
@@ -62,35 +62,57 @@
       <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'Trabajo'">
         <h4>3. Datos para postulación</h4>
         <label>Cargo de postulación*</label>
-        <input type="text" class="form-control" name="cargo" #cargo="ngModel" [(ngModel)]="contacto.cargo" required/>
+        <input type="text" class="form-control" name="cargo_postulacion" #cargoInput="ngModel" [(ngModel)]="cargo" required/>
+        <label>Ciudad de residencia*</label>
+        <input type="text" class="form-control" name="ciudad_residencia" #ciudadInput="ngModel" [(ngModel)]="ciudadResidencia" required/>
         <label>Pretensiones de renta</label>
-        <input type="text" class="form-control" name="pretension_renta" #pretension_renta="ngModel" [(ngModel)]="contacto.pretension_renta"/>
+        <input type="text" class="form-control" name="pretension_renta" #pretension_renta="ngModel" [(ngModel)]="pretensionRenta"/>
         <label>Curriculum</label>
-        <app-file-upload 
-          accept=".pdf,.doc,.docx" 
-          [multiple]="false"
-          (filesDropped)="curriculumUpload($event)">
-        </app-file-upload>
+        <input type="file" class="form-control" accept=".pdf,.doc,.docx" (change)="onFileSelected($event)" />
+        <small class="form-text text-muted">Formatos permitidos: PDF, DOC, DOCX (máx. 50KB)</small>
       </div>
 
       <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'Proveedor'">
         <h4>3. Información proveedor</h4>
         <label>RUT Empresa*</label>
-        <input type="text" class="form-control" name="rut" #rut="ngModel" [(ngModel)]="contacto.rut" required/>
+        <input 
+          type="text" 
+          class="form-control" 
+          name="rut_proveedor" 
+          #rutProveedorInput="ngModel" 
+          [(ngModel)]="rut" 
+          (input)="formatRUT($event)"
+          (blur)="onRutBlur()"
+          placeholder="Ej: 12.345.678-9"
+          maxlength="12"
+          required
+        />
         <label>Razón Social*</label>
-        <input type="text" class="form-control" name="razon_social" #razon_social="ngModel" [(ngModel)]="contacto.razon_social" required/>
+        <input type="text" class="form-control" name="razon_social" #razon_social="ngModel" [(ngModel)]="razonSocial" required/>
         <label>Producto o servicio ofrecido*</label>
-        <textarea type="text" class="form-control" name="producto_proveedor" #producto_proveedor="ngModel" [(ngModel)]="contacto.producto_proveedor" required></textarea>
+        <textarea type="text" class="form-control" name="producto_proveedor" #producto_proveedor="ngModel" [(ngModel)]="productoProveedor" required></textarea>
       </div>
 
       <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'Cotizacion'">
         <h4>3. Empresa y servicio requerido</h4>
         <label>RUT Empresa*</label>
-        <input type="text" class="form-control" name="rut" #rut="ngModel" [(ngModel)]="contacto.rut" required/>
+        <input 
+          type="text" 
+          class="form-control" 
+          name="rut_cotizacion" 
+          #rutCotizacionInput="ngModel" 
+          [(ngModel)]="rut" 
+          (input)="formatRUT($event)"
+          (blur)="onRutBlur()"
+          placeholder="Ej: 12.345.678-9"
+          maxlength="12"
+          required
+        />
         <label>Razón Social*</label>
-        <input type="text" class="form-control" name="razon_social" #razon_social="ngModel" [(ngModel)]="contacto.razon_social" required/>
+        <input type="text" class="form-control" name="razon_social_cotizacion" #razon_social_cotizacion="ngModel" [(ngModel)]="razonSocial" required/>
         <label>Servicio Solicitado*</label>
         <select class="form-control" [(ngModel)]="servicio" name="servicio" (change)="capturarServicio(servicio)">
+          <option value="">Seleccione un servicio</option>
           <option value="transporte">Transporte</option>
           <option value="arriendo">Arriendo de Equipos</option>
           <option value="bodega">Operación de Bodega</option>
@@ -98,20 +120,25 @@
 
         <div class="animated fadeIn" *ngIf="servicio == 'arriendo'">
           <label>Tipo de equipo</label>
-          <input type="text" class="form-control" name="tipo_equipo" #tipo_equipo="ngModel" [(ngModel)]="contacto.tipo_equipo"/>
+          <input type="text" class="form-control" name="tipo_equipo_arriendo" #tipo_equipo_arriendo="ngModel" [(ngModel)]="tipoEquipo"/>
         </div>
       </div>
 
       <div class="animated fadeIn" *ngIf="opcionSeleccionada == 'Otro'">
         <h4>3. Mensaje</h4>
         <label>Asunto</label>
-        <input type="text" class="form-control" name="asunto" #asunto="ngModel" [(ngModel)]="contacto.asunto"/>
+        <input type="text" class="form-control" name="asunto_mensaje" #asuntoInput="ngModel" [(ngModel)]="asunto"/>
         <label>Mensaje*</label>
-        <textarea type="text" class="form-control" name="mensaje" #mensaje="ngModel" [(ngModel)]="contacto.mensaje" required></textarea>
+        <textarea type="text" class="form-control" name="mensaje" #mensaje="ngModel" [(ngModel)]="contactForm.message" required></textarea>
       </div>
       <div *ngIf="opcionSeleccionada" class="text-center mt-5 animated fadeIn">
-        <button class="btn btn-lg btn-success" [disabled]="contactoNuevo.invalid">
-          <i class="fas fa-paper-plane"></i> Enviar
+        <button class="btn btn-lg btn-success" [disabled]="contactoNuevo.invalid || isSubmitting">
+          <span *ngIf="isSubmitting">
+            <i class="fas fa-spinner fa-spin"></i> Enviando...
+          </span>
+          <span *ngIf="!isSubmitting">
+            <i class="fas fa-paper-plane"></i> Enviar
+          </span>
         </button>
       </div>
     </div>
@@ -120,13 +147,13 @@
       <div class="animated fadeIn" *ngIf="servicio == 'transporte' && opcionSeleccionada === 'Cotizacion'">
         <h4>4. Información necesaria</h4>
         <label>Tipo de equipo*</label>
-        <input type="text" class="form-control"  name="tipo_equipo" #tipo_equipo="ngModel" [(ngModel)]="contacto.tipo_equipo" required/>
+        <input type="text" class="form-control"  name="tipo_equipo_transporte" #tipo_equipo_transporte="ngModel" [(ngModel)]="tipoEquipo" required/>
         <label>Origen*</label>
-        <input type="text" class="form-control"  name="origen" #origen="ngModel" [(ngModel)]="contacto.origen" required/>
+        <input type="text" class="form-control"  name="origen" #origen="ngModel" [(ngModel)]="origen" required/>
         <label>Destino*</label>
-        <input type="text" class="form-control"  name="destino" #destino="ngModel" [(ngModel)]="contacto.destino" required/>
+        <input type="text" class="form-control"  name="destino" #destino="ngModel" [(ngModel)]="destino" required/>
         <label>Descripción de carga*</label>
-        <textarea name="carga" id="carga" rows="3" class="form-control" name="carga" #carga="ngModel" [(ngModel)]="contacto.carga" required></textarea>
+        <textarea name="carga" id="carga" rows="3" class="form-control" #carga="ngModel" [(ngModel)]="carga" required></textarea>
       </div>
     </div>
   </form>

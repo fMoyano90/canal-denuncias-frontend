@@ -4,7 +4,7 @@ import { GalleryImage } from '../shared/image-gallery/image-gallery.component';
 @Component({
   selector: 'app-empresa',
   templateUrl: './empresa.component.html',
-  styleUrls: ['./empresa.component.css']
+  styleUrls: ['./empresa.component.scss']
 })
 export class EmpresaComponent implements OnInit {
 

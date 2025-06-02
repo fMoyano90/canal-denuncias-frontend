@@ -26,7 +26,7 @@
         name="nombre"
         class="form-control"
         #nombre="ngModel"
-        [(ngModel)]="denuncia.nombre"
+        [(ngModel)]="denunciaForm.name"
         required
       />
       <label for="email">Email*</label>
@@ -35,7 +35,7 @@
         name="email"
         class="form-control"
         #email="ngModel"
-        [(ngModel)]="denuncia.email"
+        [(ngModel)]="denunciaForm.email"
         required
       />
       <label for="telefono">Telefono*</label>
@@ -44,7 +44,7 @@
         name="telefono"
         class="form-control"
         #telefono="ngModel"
-        [(ngModel)]="denuncia.telefono"
+        [(ngModel)]="denunciaForm.phone"
         required
       />
 
@@ -154,15 +154,12 @@
           class="form-control"
           rows="6"
           name="denuncia"
-          [(ngModel)]="denuncia.denuncia"
+          [(ngModel)]="descripcionDenuncia"
           required
         ></textarea>
         <label class="pt-1">Antecedentes de Respaldo</label>
-        <app-file-upload 
-          accept=".pdf,.doc,.docx,.jpg,.png" 
-          [multiple]="true"
-          (filesDropped)="antecedenteUpload($event)">
-        </app-file-upload>
+        <input type="file" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png,.gif" (change)="onFileSelected($event)" />
+        <small class="form-text text-muted">Formatos permitidos: PDF, DOC, DOCX, JPG, PNG, GIF (máx. 50KB)</small>
       </div>
       <div
         class="animated fadeIn"
@@ -173,40 +170,47 @@
         <input
           type="text"
           class="form-control"
-          name="razon_social"
-          #razon_social="ngModel"
-          [(ngModel)]="denuncia.razon_social"
+          name="razon_social_empresa"
+          #razonSocialEmpresa="ngModel"
+          [(ngModel)]="razonSocial"
+          placeholder="Ej: Empresa S.A."
         />
         <label>RUT</label>
         <input
           type="text"
           class="form-control"
-          name="rut"
-          #rut="ngModel"
-          [(ngModel)]="denuncia.rut"
+          name="rut_empresa"
+          #rutEmpresa="ngModel"
+          [(ngModel)]="rut"
+          (input)="formatRUT($event)"
+          (blur)="onRutBlur()"
+          placeholder="Ej: 12.345.678-9"
+          maxlength="12"
         />
         <label>Descripción de reclamo*</label>
         <textarea
           class="form-control"
           rows="6"
           name="reclamo"
-          [(ngModel)]="denuncia.reclamo"
+          [(ngModel)]="descripcionReclamo"
           required
         ></textarea>
         <label class="pt-1">Antecedentes de Respaldo</label>
-        <app-file-upload 
-          accept=".pdf,.doc,.docx,.jpg,.png" 
-          [multiple]="true"
-          (filesDropped)="antecedenteUpload($event)">
-        </app-file-upload>
+        <input type="file" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png,.gif" (change)="onFileSelected($event)" />
+        <small class="form-text text-muted">Formatos permitidos: PDF, DOC, DOCX, JPG, PNG, GIF (máx. 50KB)</small>
       </div>
 
       <div *ngIf="opcionSeleccionada" class="text-center mt-5 animated fadeIn">
         <button
           class="btn btn-lg btn-success"
-          [disabled]="denunciaNueva.invalid"
+          [disabled]="denunciaNueva.invalid || isSubmitting"
         >
-          <i class="fas fa-paper-plane"></i> Enviar
+          <span *ngIf="isSubmitting">
+            <i class="fas fa-spinner fa-spin"></i> Enviando...
+          </span>
+          <span *ngIf="!isSubmitting">
+            <i class="fas fa-paper-plane"></i> Enviar
+          </span>
         </button>
       </div>
     </div>
